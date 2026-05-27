@@ -1,8 +1,14 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800;900&display=swap');
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0d3352;
+  --foreground: #f4f7fb;
+  --noc-blue: #0d3352;
+  --noc-light-blue: #00b5ff;
+  --noc-yellow: #ffd703;
+  --noc-pink: #ff77a8;
+  --noc-orange: #ff692f;
 }
 
 @theme inline {
@@ -12,15 +18,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Nunito', var(--font-geist-sans), sans-serif;
 }

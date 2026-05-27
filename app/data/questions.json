@@ -1,0 +1,55 @@
+[
+  {
+    "id": "q1",
+    "title": "Critical Data Question 1",
+    "scenario": "Imagine a giant ice cube floating in a glass of water. If that ice cube melts, the level stays the same.",
+    "question": "Now think about Arctic sea ice floating in the ocean. If this floating sea ice melts completely, what happens to sea level?",
+    "options": [
+      "It adds a lot of extra water to the ocean",
+      "The sea level stays about the same",
+      "The sea level will go down"
+    ],
+    "correctIndex": 1,
+    "bg": "#ffd703",
+    "media": ["/q1_media_1.png", "/q1_media_2.png"]
+  },
+  {
+    "id": "q2",
+    "title": "Critical Data Question 2",
+    "scenario": "Satellite records show Arctic sea-ice area shrinking in every recent decade.",
+    "question": "What does less bright ice at the surface do to how much sunlight Earth absorbs?",
+    "options": [
+      "Earth reflects more sunlight, so cooling increases",
+      "Earth absorbs more sunlight, which can amplify warming",
+      "It has no measurable impact on energy balance"
+    ],
+    "correctIndex": 1,
+    "bg": "#00b5ff"
+  },
+  {
+    "id": "q3",
+    "title": "Critical Data Question 3",
+    "scenario": "Permafrost stores large amounts of frozen organic carbon across Arctic land.",
+    "question": "When permafrost thaws, which climate effect is most likely?",
+    "options": [
+      "Long-term greenhouse gas release can increase",
+      "Global greenhouse gases decrease quickly",
+      "Only ocean salinity changes, not climate"
+    ],
+    "correctIndex": 0,
+    "bg": "#ff77a8"
+  },
+  {
+    "id": "q4",
+    "title": "Critical Data Question 4",
+    "scenario": "The Arctic warms several times faster than the global average.",
+    "question": "Which action helps reduce future warming pressure the most?",
+    "options": [
+      "Higher fossil fuel use for short-term growth",
+      "Slowing clean-energy rollout until later",
+      "Reducing emissions through efficiency and clean energy"
+    ],
+    "correctIndex": 2,
+    "bg": "#ff692f"
+  }
+]
