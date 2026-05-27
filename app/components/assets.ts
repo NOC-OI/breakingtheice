@@ -1,9 +1,11 @@
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
 export const ASSETS = {
-  openingVectorPrimary: '/opening_vector_primary.svg',
-  openingVectorSecondary: '/opening_vector_secondary.svg',
-  playIcon: '/play_icon.png',
-  bearAvatar: '/bear_avatar.png',
-  agentCard: '/agent_card.png',
-  finishDiver: '/finish_diver.png',
-  visibilityHideIcon: '/visibility_hide_icon.png'
+  openingVectorPrimary: `${BASE_PATH}/opening_vector_primary.svg`,
+  openingVectorSecondary: `${BASE_PATH}/opening_vector_secondary.svg`,
+  playIcon: `${BASE_PATH}/play_icon.png`,
+  bearAvatar: `${BASE_PATH}/bear_avatar.png`,
+  agentCard: `${BASE_PATH}/agent_card.png`,
+  finishDiver: `${BASE_PATH}/finish_diver.png`,
+  visibilityHideIcon: `${BASE_PATH}/visibility_hide_icon.png`
 };

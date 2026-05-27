@@ -25,6 +25,8 @@ export function QuestionsStage({
   onNext,
   onMinimize
 }: QuestionsStageProps) {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
   return (
     <section
       className="relative z-20 h-full w-full overflow-auto"
@@ -79,7 +81,7 @@ export function QuestionsStage({
             {question.media.map(src => (
               <Image
                 key={src}
-                src={src}
+                src={src.startsWith('/') ? `${basePath}${src}` : src}
                 alt="Question visual"
                 width={1200}
                 height={720}
