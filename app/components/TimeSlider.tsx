@@ -73,7 +73,7 @@ export function TimeSlider({
 
   function handleNextYear() {
     setIsPlaying(false);
-    if (yearIndex >= MAX_MONTH_INDEX) {
+    if (yearIndex >= MAX_MONTH_INDEX - 11) {
       return;
     }
     onChangeYear(yearIndex + 12);
@@ -90,7 +90,7 @@ export function TimeSlider({
   function handleLastYear() {
     setIsPlaying(false);
 
-    if (yearIndex <= 0) {
+    if (yearIndex <= 11) {
       return;
     }
     onChangeYear(yearIndex - 12);
