@@ -205,11 +205,11 @@ export function MapPage({
             ))}
           </div>
           <div className="mt-0.5 grid w-48 grid-cols-5 text-[10px] font-extrabold tracking-wide text-white">
-            <span className="text-left">0-1</span>
+            <span className="text-center">0-1</span>
             <span className="text-center">1-2</span>
             <span className="text-center">2-3</span>
             <span className="text-center">3-4</span>
-            <span className="text-right">4+</span>
+            <span className="text-center">4+</span>
           </div>
           <div className="mt-1 flex items-center justify-center text-[10px] font-bold uppercase tracking-wide text-white/85">
             <span>Years</span>
