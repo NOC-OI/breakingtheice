@@ -80,7 +80,7 @@ export function TimeSlider({
   }
 
   return (
-    <div className="absolute bottom-8 left-1/2 z-20 h-33.25 w-[min(94vw,1180px)] -translate-x-1/2">
+    <div className="absolute bottom-8 left-1/2 z-20 h-37.25 w-[min(94vw,1180px)] -translate-x-1/2">
       <div
         className={`relative ml-auto flex text-white shadow-xl transition-[width,height,padding] duration-300 ease-out ${
           timelineVisible
@@ -93,7 +93,7 @@ export function TimeSlider({
           onClick={onToggleTimeline}
           className={`flex cursor-pointer items-center justify-center rounded-xs bg-[#faf7f5] hover:bg-[#e0e0e0] text-[#0d3352] transition-[filter,background-color] hover:brightness-95 ${
             timelineVisible
-              ? 'absolute right-4 top-4 h-7 w-8'
+              ? 'absolute right-4 top-4 h-8 w-8'
               : 'absolute bottom-5.5 right-5.75 h-5 w-6'
           }`}
           aria-label={timelineVisible ? 'Hide timeline' : 'Show timeline'}
@@ -119,7 +119,7 @@ export function TimeSlider({
             timelineVisible ? 'w-full pr-14 opacity-100' : 'max-w-0 opacity-0'
           }`}
         >
-          <div className="mb-2 flex justify-between gap-4">
+          <div className="mb-6 flex items-center justify-between gap-4">
             <p className="text-sm font-bold text-[#d8e6f5] sm:text-2xl">
               Scroll across to see how ice cover changes over time
             </p>
@@ -129,7 +129,7 @@ export function TimeSlider({
                 type="button"
                 onClick={handleBefore}
                 className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
-                aria-label="Next month"
+                aria-label="Previous month"
               >
                 <FaBackwardStep aria-hidden className="h-4 w-4" />
               </button>

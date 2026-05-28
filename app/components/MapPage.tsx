@@ -138,6 +138,60 @@ export function MapPage({
 
       zarrLayerRef.current = zarrLayer;
       map.addLayer(zarrLayer);
+      map.addSource('ocean-labels', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [
+            {
+              type: 'Feature',
+              properties: { name: 'Arctic Ocean' },
+              geometry: { type: 'Point', coordinates: [-10, 82] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'North Atlantic Ocean' },
+              geometry: { type: 'Point', coordinates: [-35, 35] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Pacific Ocean' },
+              geometry: { type: 'Point', coordinates: [-150, 10] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Indian Ocean' },
+              geometry: { type: 'Point', coordinates: [80, -25] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Southern Ocean' },
+              geometry: { type: 'Point', coordinates: [0, -60] }
+            }
+          ]
+        }
+      });
+
+      map.addLayer({
+        id: 'ocean-labels',
+        type: 'symbol',
+        source: 'ocean-labels',
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': ['Noto Sans Italic'],
+          'text-size': ['interpolate', ['linear'], ['zoom'], 1, 14, 4, 22],
+          'text-letter-spacing': 0.12,
+          'text-max-width': 12,
+          'text-allow-overlap': false,
+          'symbol-placement': 'point'
+        },
+        paint: {
+          'text-color': '#3b6f92',
+          'text-halo-color': 'rgba(255, 255, 255, 0.65)',
+          'text-halo-width': 1.2,
+          'text-opacity': ['interpolate', ['linear'], ['zoom'], 1, 0.75, 5, 0.35]
+        }
+      });
     });
 
     mapRef.current = map;
