@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ASSETS } from './assets';
 import { QuestVisibilityControl } from './QuestVisibilityControl';
@@ -8,6 +9,32 @@ type OpeningStageProps = {
 };
 
 export function OpeningStage({ onPlay, onMinimize }: OpeningStageProps) {
+  const playTimerRef = useRef<number | null>(null);
+  const [isPlayPressing, setIsPlayPressing] = useState(false);
+  const [isPlayHovered, setIsPlayHovered] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      if (playTimerRef.current) {
+        window.clearTimeout(playTimerRef.current);
+      }
+    };
+  }, []);
+
+  function handlePlayClick() {
+    if (playTimerRef.current) {
+      window.clearTimeout(playTimerRef.current);
+    }
+
+    setIsPlayPressing(true);
+    playTimerRef.current = window.setTimeout(() => {
+      onPlay();
+      setIsPlayPressing(false);
+    }, 150);
+  }
+
+  const playOffsetY = isPlayPressing ? 13 : isPlayHovered ? 4 : 0;
+
   return (
     <section className="relative z-20 h-full w-full overflow-hidden bg-[#0d3352]">
       <div className="absolute inset-[-133.58%_-48.43%_-139.5%_-40.02%] opacity-70">
@@ -29,8 +56,17 @@ export function OpeningStage({ onPlay, onMinimize }: OpeningStageProps) {
 
         <button
           type="button"
-          onClick={onPlay}
-          className="mt-14 inline-flex h-16.5 items-center gap-2.5 rounded-xl border-[2.66px] border-white/50 bg-[#00b5ff] px-6 pb-3 pt-2.5 text-[31px] font-extrabold uppercase tracking-[0.04em] text-[#0d3352] shadow-[0_13px_0_rgba(0,0,0,0.2)] transition hover:translate-y-px"
+          onClick={handlePlayClick}
+          onMouseEnter={() => setIsPlayHovered(true)}
+          onMouseLeave={() => setIsPlayHovered(false)}
+          style={{ transform: `translateY(${playOffsetY}px)` }}
+          className={`mt-14 inline-flex h-16.5 cursor-pointer items-center gap-2.5 rounded-xl border-[2.66px] border-white/50 bg-[#00b5ff] px-6 pb-3 pt-2.5 text-[31px] font-extrabold uppercase tracking-[0.04em] text-[#0d3352] transition-[transform,box-shadow,filter] duration-150 hover:brightness-105 ${
+            isPlayPressing
+              ? 'shadow-[0_0_0_rgba(0,0,0,0.2)]'
+              : isPlayHovered
+                ? 'shadow-[0_9px_0_rgba(0,0,0,0.2)]'
+                : 'shadow-[0_13px_0_rgba(0,0,0,0.2)]'
+          }`}
         >
           <Image src={ASSETS.playIcon} alt="" width={37} height={37} className="h-9.25 w-9.25" />
           Play

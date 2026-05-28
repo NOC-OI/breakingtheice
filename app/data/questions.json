@@ -5,9 +5,21 @@
     "scenario": "Imagine a giant ice cube floating in a glass of water. If that ice cube melts, the level stays the same.",
     "question": "Now think about Arctic sea ice floating in the ocean. If this floating sea ice melts completely, what happens to sea level?",
     "options": [
-      "It adds a lot of extra water to the ocean",
-      "The sea level stays about the same",
-      "The sea level will go down"
+      {
+        "image": "/q1_option_1.png",
+        "text": "The sea level will rise significantly",
+        "explanation": "People assume melting ice always adds volume, but floating ice already displaces its own weight!"
+      },
+      {
+        "image": "/q1_option_2.png",
+        "text": "It adds a lot of extra water to the ocean",
+        "explanation": "Just like in a glass, floating ice has already displaced the water, so melting doesnt add extra volume."
+      },
+      {
+        "image": "/q1_option_3.png",
+        "text": "The sea level stays about the same",
+        "explanation": "Melting adds liquid water to the surface: it does not remove water from the ocean."
+      }
     ],
     "correctIndex": 1,
     "bg": "#ffd703",
@@ -19,9 +31,21 @@
     "scenario": "Satellite records show Arctic sea-ice area shrinking in every recent decade.",
     "question": "What does less bright ice at the surface do to how much sunlight Earth absorbs?",
     "options": [
-      "Earth reflects more sunlight, so cooling increases",
-      "Earth absorbs more sunlight, which can amplify warming",
-      "It has no measurable impact on energy balance"
+      {
+        "image": "",
+        "text": "Earth reflects more sunlight, so cooling increases",
+        "explanation": "Less ice means more dark ocean, which absorbs more sunlight and can amplify warming."
+      },
+      {
+        "image": "",
+        "text": "Earth absorbs more sunlight, which can amplify warming",
+        "explanation": "Less ice means more dark ocean, which absorbs more sunlight and can amplify warming."
+      },
+      {
+        "image": "",
+        "text": "It has no measurable impact on energy balance",
+        "explanation": "Less ice means more dark ocean, which absorbs more sunlight and can amplify warming."
+      }
     ],
     "correctIndex": 1,
     "bg": "#00b5ff"
@@ -32,9 +56,21 @@
     "scenario": "Permafrost stores large amounts of frozen organic carbon across Arctic land.",
     "question": "When permafrost thaws, which climate effect is most likely?",
     "options": [
-      "Long-term greenhouse gas release can increase",
-      "Global greenhouse gases decrease quickly",
-      "Only ocean salinity changes, not climate"
+      {
+        "image": "",
+        "text": "Long-term greenhouse gas release can increase",
+        "explanation": "Thawing permafrost releases stored carbon, contributing to greenhouse gas emissions."
+      },
+      {
+        "image": "",
+        "text": "Global greenhouse gases decrease quickly",
+        "explanation": "Thawing permafrost releases stored carbon, contributing to greenhouse gas emissions."
+      },
+      {
+        "image": "",
+        "text": "Only ocean salinity changes, not climate",
+        "explanation": "Thawing permafrost releases stored carbon, contributing to greenhouse gas emissions."
+      }
     ],
     "correctIndex": 0,
     "bg": "#ff77a8"
@@ -45,9 +81,21 @@
     "scenario": "The Arctic warms several times faster than the global average.",
     "question": "Which action helps reduce future warming pressure the most?",
     "options": [
-      "Higher fossil fuel use for short-term growth",
-      "Slowing clean-energy rollout until later",
-      "Reducing emissions through efficiency and clean energy"
+      {
+        "image": "",
+        "text": "Higher fossil fuel use for short-term growth",
+        "explanation": "Using more fossil fuels increases greenhouse gas emissions, contributing to global warming."
+      },
+      {
+        "image": "",
+        "text": "Slowing clean-energy rollout until later",
+        "explanation": "Delaying clean energy adoption prolongs reliance on fossil fuels, increasing emissions."
+      },
+      {
+        "image": "",
+        "text": "Reducing emissions through efficiency and clean energy",
+        "explanation": "Implementing energy efficiency measures and transitioning to clean energy sources reduces greenhouse gas emissions, mitigating future warming."
+      }
     ],
     "correctIndex": 2,
     "bg": "#ff692f"

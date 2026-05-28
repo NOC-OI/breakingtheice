@@ -5,7 +5,7 @@ export type Question = {
   title: string;
   scenario: string;
   question: string;
-  options: string[];
+  options: { image?: string; text: string; explanation: string }[];
   correctIndex: number;
   bg: string;
   media?: string[];

@@ -39,7 +39,7 @@ export function FinishStage({ onFinish }: FinishStageProps) {
         <button
           type="button"
           onClick={onFinish}
-          className="mx-auto mt-10 rounded-md bg-[#00b5ff] px-8 py-3 text-xl font-extrabold text-white shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:brightness-110"
+          className="cursor-pointer mx-auto mt-10 rounded-md bg-[#00b5ff] px-8 py-3 text-xl font-extrabold text-white shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:brightness-110"
         >
           Finish →
         </button>

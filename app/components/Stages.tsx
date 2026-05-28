@@ -9,18 +9,15 @@ type StagesProps = {
   question: Question;
   questionIndex: number;
   selectedOption: number | null;
-  showCorrectAnswer: boolean;
   isCorrect: boolean;
   onAnswer: (optionIndex: number) => void;
   onNextQuestion: () => void;
   warningProgress: number;
-  showAgent: boolean;
   showStartMission: boolean;
   onStartMission: () => void;
   onPlay: () => void;
   onFinish: () => void;
   onMinimize: () => void;
-  totalQuestions: number;
 };
 
 export function Stages({
@@ -28,18 +25,15 @@ export function Stages({
   question,
   questionIndex,
   selectedOption,
-  showCorrectAnswer,
   isCorrect,
   onAnswer,
   onNextQuestion,
   warningProgress,
-  showAgent,
   showStartMission,
   onStartMission,
   onPlay,
   onFinish,
-  onMinimize,
-  totalQuestions
+  onMinimize
 }: StagesProps) {
   if (stage === 'map') {
     return null;
@@ -52,7 +46,6 @@ export function Stages({
       {stage === 'intro' && (
         <IntroStage
           warningProgress={warningProgress}
-          showAgent={showAgent}
           showStartMission={showStartMission}
           onStartMission={onStartMission}
           onMinimize={onMinimize}
@@ -63,9 +56,7 @@ export function Stages({
         <QuestionsStage
           question={question}
           questionIndex={questionIndex}
-          totalQuestions={totalQuestions}
           selectedOption={selectedOption}
-          showCorrectAnswer={showCorrectAnswer}
           isCorrect={isCorrect}
           onSelectOption={onAnswer}
           onNext={onNextQuestion}

@@ -17,10 +17,8 @@ export default function Home() {
   const [yearIndex, setYearIndex] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
 
   const [warningProgress, setWarningProgress] = useState(100);
-  const [showAgent, setShowAgent] = useState(false);
   const [showStartMission, setShowStartMission] = useState(false);
 
   const question = useMemo(() => QUESTIONS[questionIndex], [questionIndex]);
@@ -45,7 +43,6 @@ export default function Home() {
         const next = current - 2.2;
         if (next <= 0) {
           window.clearInterval(intervalId);
-          window.setTimeout(() => setShowAgent(true), 300);
           window.setTimeout(() => setShowStartMission(true), 1000);
           return 0;
         }
@@ -76,7 +73,6 @@ export default function Home() {
 
   function onPlay() {
     setWarningProgress(100);
-    setShowAgent(false);
     setShowStartMission(false);
     setResumeStage('intro');
     setStage('intro');
@@ -84,15 +80,13 @@ export default function Home() {
 
   function onStartMission() {
     setSelectedOption(null);
-    setShowCorrectAnswer(false);
     setQuestionIndex(0);
     setResumeStage('questions');
     setStage('questions');
   }
 
   function onAnswer(optionIndex: number) {
-    setSelectedOption(optionIndex);
-    setShowCorrectAnswer(true);
+    setSelectedOption(selectedOption === optionIndex ? null : optionIndex);
   }
 
   function onNextQuestion() {
@@ -102,7 +96,6 @@ export default function Home() {
 
     if (questionIndex < QUESTIONS.length - 1) {
       setSelectedOption(null);
-      setShowCorrectAnswer(false);
       setQuestionIndex(value => value + 1);
       return;
     }
@@ -117,7 +110,6 @@ export default function Home() {
     setResumeStage('opening');
     setQuestionIndex(0);
     setSelectedOption(null);
-    setShowCorrectAnswer(false);
   }
 
   return (
@@ -127,7 +119,6 @@ export default function Home() {
         yearIndex={yearIndex}
         timelineVisible={timelineVisible}
         onToggleTimeline={() => setTimelineVisible(value => !value)}
-        onHideTimeline={() => setTimelineVisible(false)}
         onChangeYear={setYearIndex}
         onStartOrResume={handleStartOrResume}
       />
@@ -136,18 +127,15 @@ export default function Home() {
         question={question}
         questionIndex={questionIndex}
         selectedOption={selectedOption}
-        showCorrectAnswer={showCorrectAnswer}
         isCorrect={isCorrect}
         onAnswer={onAnswer}
         onNextQuestion={onNextQuestion}
         warningProgress={warningProgress}
-        showAgent={showAgent}
         showStartMission={showStartMission}
         onStartMission={onStartMission}
         onPlay={onPlay}
         onFinish={onFinish}
         onMinimize={moveToMap}
-        totalQuestions={QUESTIONS.length}
       />
     </main>
   );
