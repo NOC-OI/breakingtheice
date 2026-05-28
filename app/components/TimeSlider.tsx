@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { FaFastBackward, FaFastForward } from 'react-icons/fa';
 import { FaBackwardStep, FaForwardStep, FaPause, FaPlay } from 'react-icons/fa6';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 
@@ -70,6 +71,14 @@ export function TimeSlider({
     onChangeYear(yearIndex + 1);
   }
 
+  function handleNextYear() {
+    setIsPlaying(false);
+    if (yearIndex >= MAX_MONTH_INDEX) {
+      return;
+    }
+    onChangeYear(yearIndex + 12);
+  }
+
   function handleBefore() {
     setIsPlaying(false);
 
@@ -77,6 +86,14 @@ export function TimeSlider({
       return;
     }
     onChangeYear(yearIndex - 1);
+  }
+  function handleLastYear() {
+    setIsPlaying(false);
+
+    if (yearIndex <= 0) {
+      return;
+    }
+    onChangeYear(yearIndex - 12);
   }
 
   return (
@@ -127,9 +144,20 @@ export function TimeSlider({
             <div className="flex items-center gap-2 rounded-xl backdrop-blur-md">
               <button
                 type="button"
+                onClick={handleLastYear}
+                className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-2.5 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
+                aria-label="Previous year"
+                title="Previous year"
+              >
+                <FaFastBackward aria-hidden className="h-4 w-4" />
+              </button>
+
+              <button
+                type="button"
                 onClick={handleBefore}
                 className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
                 aria-label="Previous month"
+                title="Previous month"
               >
                 <FaBackwardStep aria-hidden className="h-4 w-4" />
               </button>
@@ -138,6 +166,7 @@ export function TimeSlider({
                 onClick={() => setIsPlaying(true)}
                 className={`flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer ${isPlaying ? 'bg-white/25' : ''}`}
                 aria-label="Play timeline"
+                title="Play timeline"
               >
                 <FaPlay aria-hidden className="h-4 w-4" />
               </button>
@@ -146,6 +175,7 @@ export function TimeSlider({
                 onClick={() => setIsPlaying(false)}
                 className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
                 aria-label="Pause timeline"
+                title="Pause timeline"
               >
                 <FaPause aria-hidden className="h-4 w-4" />
               </button>
@@ -154,8 +184,18 @@ export function TimeSlider({
                 onClick={handleNext}
                 className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
                 aria-label="Next month"
+                title="Next month"
               >
                 <FaForwardStep aria-hidden className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNextYear}
+                className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-2.5 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
+                aria-label="Next year"
+                title="Next year"
+              >
+                <FaFastForward aria-hidden className="h-5 w-5" />
               </button>
             </div>
           </div>
