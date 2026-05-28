@@ -192,6 +192,125 @@ export function MapPage({
           'text-opacity': ['interpolate', ['linear'], ['zoom'], 1, 0.75, 5, 0.35]
         }
       });
+      map.addSource('arctic-sea-labels', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [
+            // Central ocean
+            {
+              type: 'Feature',
+              properties: { name: 'Arctic Ocean', kind: 'ocean' },
+              geometry: { type: 'Point', coordinates: [-35, 84] }
+            },
+
+            // Marginal seas around the Arctic Ocean
+            {
+              type: 'Feature',
+              properties: { name: 'Beaufort Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [-140, 72] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Chukchi Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [-170, 70] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'East Siberian Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [160, 73] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Laptev Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [125, 75] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Kara Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [75, 74] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Barents Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [38, 74] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Pechora Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [55, 69.5] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'White Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [38, 65.5] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Greenland Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [-5, 75] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Norwegian Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [0, 68] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Lincoln Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [-55, 83] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Wandel Sea', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [-15, 82] }
+            },
+
+            // Optional, useful if your map extends toward Canada/Greenland
+            {
+              type: 'Feature',
+              properties: { name: 'Baffin Bay', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [-68, 74] }
+            },
+            {
+              type: 'Feature',
+              properties: { name: 'Hudson Bay', kind: 'sea' },
+              geometry: { type: 'Point', coordinates: [-85, 60] }
+            }
+          ]
+        }
+      });
+
+      map.addLayer({
+        id: 'arctic-sea-labels',
+        type: 'symbol',
+        source: 'arctic-sea-labels',
+        minzoom: 1,
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': ['Noto Sans Italic'],
+          'text-size': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            1,
+            ['case', ['==', ['get', 'kind'], 'ocean'], 16, 11],
+            4,
+            ['case', ['==', ['get', 'kind'], 'ocean'], 26, 17]
+          ],
+          'text-letter-spacing': ['case', ['==', ['get', 'kind'], 'ocean'], 0.16, 0.08],
+          'text-max-width': 18,
+          'text-allow-overlap': false,
+          'text-ignore-placement': false,
+          'symbol-placement': 'point'
+        },
+        paint: {
+          'text-color': '#111111',
+          'text-halo-color': 'rgba(255, 255, 255, 0.75)',
+          'text-halo-width': 1.2,
+          'text-opacity': 0.95
+        }
+      });
     });
 
     mapRef.current = map;
