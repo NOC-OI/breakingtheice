@@ -9,8 +9,5 @@ export const ASSETS = {
   bearZoom: `${BASE_PATH}/bear_zoom.png`,
   agentCard: `${BASE_PATH}/agent_card.png`,
   finishDiver: `${BASE_PATH}/finish_diver.png`,
-  visibilityHideIcon: `${BASE_PATH}/visibility_hide_icon.png`,
-  ice1: `${BASE_PATH}/ice_1.png`,
-  ice2: `${BASE_PATH}/ice_2.png`,
-  ice3: `${BASE_PATH}/ice_3.png`
+  visibilityHideIcon: `${BASE_PATH}/visibility_hide_icon.png`
 };

@@ -14,6 +14,8 @@ type QuestionsStageProps = {
   onMinimize: () => void;
 };
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
 export function QuestionsStage({
   question,
   questionIndex,
@@ -72,7 +74,7 @@ export function QuestionsStage({
                   {option.image ? (
                     <div className="relative h-[60%] w-full mt-2">
                       <Image
-                        src={option.image}
+                        src={`${BASE_PATH}${option.image}`}
                         alt={option.text}
                         fill
                         className={`object-contain transition ${
@@ -125,9 +127,7 @@ export function QuestionsStage({
         >
           <div
             className={`absolute overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] ${
-              isEvenQuestion
-                ? 'right-0 top-0 h-[260px] w-[250px]'
-                : 'right-[60px] top-0 h-[360px] w-[280px]'
+              isEvenQuestion ? 'right-0 top-0 h-65 w-62.5' : 'right-15 top-0 h-90 w-70'
             }`}
           >
             {firstMedia ? (
@@ -146,8 +146,8 @@ export function QuestionsStage({
           <div
             className={`absolute overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] ${
               isEvenQuestion
-                ? 'left-0 top-[70px] h-[320px] w-[300px] rotate-[8.55deg]'
-                : 'right-0 top-[210px] h-[300px] w-[320px] rotate-[8.55deg]'
+                ? 'left-0 top-17.5 h-80 w-75 rotate-[8.55deg]'
+                : 'right-0 top-52.5 h-75 w-[320px] rotate-[8.55deg]'
             }`}
           >
             {secondMedia ? (
