@@ -115,3 +115,51 @@ Example pattern:
 3. Use it from components via ASSETS.<name>
 
 This keeps paths consistent and avoids hardcoding strings across multiple components.
+
+## Updating Questions
+
+Quiz content is driven by:
+
+1. Data file: app/data/questions.json
+2. Type definition: app/types/quiz.ts
+3. Rendering component: app/components/QuestionsStage.tsx
+
+### Question JSON shape
+
+Each question object should include:
+
+1. id: unique string (for example q1)
+2. title: displayed heading
+3. scenario: explanatory paragraph
+4. question: the actual prompt
+5. options: array of 3 option objects
+6. correctIndex: zero-based index of the correct option
+7. bg: stage background color (hex)
+8. media: optional array of one or two image paths
+
+Each option object currently supports:
+
+1. text: option label shown on the card
+2. explanation: feedback text for learning context
+3. image: optional image path
+
+### Adding or changing question images
+
+1. Add new image files into public/
+2. Reference them in app/data/questions.json using paths like /my_image.png
+3. For media pairs, place them in the media array in the order you want them layered
+
+The question stage layout alternates media composition by question number:
+
+1. Odd-numbered questions use the default image stack layout
+2. Even-numbered questions use the alternate position layout
+
+### Quick validation after updating questions
+
+Run these commands before pushing:
+
+```bash
+npm run format:check
+npm run lint
+npm run build
+```

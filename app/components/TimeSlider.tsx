@@ -9,6 +9,7 @@ const START_YEAR = 1984;
 const END_YEAR = 2024;
 const TOTAL_MONTHS = (END_YEAR - START_YEAR + 1) * 12;
 const MAX_MONTH_INDEX = TOTAL_MONTHS - 1;
+const ALL_TICK_YEARS = Array.from({ length: END_YEAR - START_YEAR + 1 }, (_, i) => START_YEAR + i);
 const TICK_YEARS = Array.from(
   { length: Math.floor((END_YEAR - START_YEAR) / 5) + 1 },
   (_, i) => START_YEAR + i * 5
@@ -37,7 +38,17 @@ export function TimeSlider({
 
   const progressWidth = getThumbCenterPosition(yearIndex);
 
-  const tickMarks = TICK_YEARS.map(year => {
+  const labelTickMarks = TICK_YEARS.map(year => {
+    const value = (year - START_YEAR) * 12;
+
+    return {
+      year,
+      value,
+      left: year === START_YEAR ? '0px' : getThumbCenterPosition(value)
+    };
+  });
+
+  const yearTickMarks = ALL_TICK_YEARS.map(year => {
     const value = (year - START_YEAR) * 12;
 
     return {
@@ -201,14 +212,14 @@ export function TimeSlider({
           </div>
           <div className="mb-0 hidden h-4.5 text-[10px] font-bold sm:block -mr-2">
             <div className="relative h-full w-full">
-              {tickMarks.map((mark, index) => (
+              {labelTickMarks.map((mark, index) => (
                 <span
                   key={mark.year}
                   style={{ left: mark.left }}
                   className={`absolute top-0 ${
                     index === 0
                       ? 'translate-x-0'
-                      : index === tickMarks.length - 1
+                      : index === labelTickMarks.length - 1
                         ? '-translate-x-full'
                         : '-translate-x-1/2'
                   }`}
@@ -221,13 +232,13 @@ export function TimeSlider({
 
           <div className="mb-0 hidden h-2 sm:block">
             <div className="relative h-full w-full">
-              {tickMarks.map((mark, index) => (
+              {yearTickMarks.map((mark, index) => (
                 <span
                   key={`tick-${mark.year}`}
                   style={{ left: mark.left }}
-                  className={`absolute top-0 h-2 w-px bg-white/80 ${
-                    index === 0 ? 'translate-x-0' : '-translate-x-1/2'
-                  }`}
+                  className={`absolute top-0 h-2 w-px ${
+                    mark.year % 5 === 0 ? 'bg-white/90' : 'bg-white/50'
+                  } ${index === 0 ? 'translate-x-0' : '-translate-x-1/2'}`}
                   aria-hidden
                 />
               ))}
