@@ -28,7 +28,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    # env:
+    env:
+      NEXT_PUBLIC_BASE_PATH: '/breakingtheice'
     #   NEXT_PUBLIC_MAPBOX_API_KEY: ${{ secrets.NEXT_PUBLIC_MAPBOX_API_KEY }}
     #   NEXT_PUBLIC_TILE_SERVER_URL: ${{ secrets.NEXT_PUBLIC_TILE_SERVER_URL }}
     #   NEXT_PUBLIC_ZARR_TILE_SERVER_URL: ${{ secrets.NEXT_PUBLIC_ZARR_TILE_SERVER_URL }}
