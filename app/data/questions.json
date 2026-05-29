@@ -1,103 +1,132 @@
 [
   {
     "id": "q1",
-    "title": "Critical Data Question 1",
-    "scenario": "Imagine a giant ice cube floating in a glass of water. If that ice cube melts, the level stays the same.",
-    "question": "Now think about Arctic sea ice floating in the ocean. If this floating sea ice melts completely, what happens to sea level?",
+    "title": "Arctic Question 1",
+    "scenario": "The Arctic is one of Earth's polar regions.",
+    "question": "Where is the Arctic?",
     "options": [
       {
         "image": "/q1_option_1.png",
-        "text": "The sea level will rise significantly",
-        "explanation": "People assume melting ice always adds volume, but floating ice already displaces its own weight!"
+        "text": "At the south of the planet",
+        "explanation": "The south polar region is called the Antarctic, not the Arctic."
       },
       {
         "image": "/q1_option_2.png",
-        "text": "It adds a lot of extra water to the ocean",
-        "explanation": "Just like in a glass, floating ice has already displaced the water, so melting doesnt add extra volume."
+        "text": "At the north of the planet",
+        "explanation": "The Arctic is Earth's northern polar region, around the North Pole."
       },
       {
         "image": "/q1_option_3.png",
-        "text": "The sea level stays about the same",
-        "explanation": "Melting adds liquid water to the surface: it does not remove water from the ocean."
+        "text": "At the Equator",
+        "explanation": "The Equator is the warm middle line around Earth, far from the polar Arctic region."
       }
     ],
     "correctIndex": 1,
     "bg": "#ffd703",
-    "media": ["/q1_media_1.png", "/q1_media_2.png"]
+    "media": []
   },
   {
     "id": "q2",
-    "title": "Critical Data Question 2",
-    "scenario": "Satellite records show Arctic sea-ice area shrinking in every recent decade.",
-    "question": "What does less bright ice at the surface do to how much sunlight Earth absorbs?",
+    "title": "Arctic Question 2",
+    "scenario": "The Arctic and Antarctic are both cold polar regions, but they are not the same kind of place.",
+    "question": "The Arctic is:",
     "options": [
       {
-        "image": "",
-        "text": "Earth reflects more sunlight, so cooling increases",
-        "explanation": "Less ice means more dark ocean, which absorbs more sunlight and can amplify warming."
+        "image": "/q2_option_1.png",
+        "text": "A continent",
+        "explanation": "Antarctica is a continent. The Arctic is mainly ocean covered by sea ice."
       },
       {
-        "image": "",
-        "text": "Earth absorbs more sunlight, which can amplify warming",
-        "explanation": "Less ice means more dark ocean, which absorbs more sunlight and can amplify warming."
+        "image": "/q2_option_2.png",
+        "text": "Land surrounded by frozen ocean",
+        "explanation": "This describes a land-centred region, but the Arctic is centred on an ocean."
       },
       {
-        "image": "",
-        "text": "It has no measurable impact on energy balance",
-        "explanation": "Less ice means more dark ocean, which absorbs more sunlight and can amplify warming."
-      }
-    ],
-    "correctIndex": 1,
-    "bg": "#00b5ff"
-  },
-  {
-    "id": "q3",
-    "title": "Critical Data Question 3",
-    "scenario": "Permafrost stores large amounts of frozen organic carbon across Arctic land.",
-    "question": "When permafrost thaws, which climate effect is most likely?",
-    "options": [
-      {
-        "image": "",
-        "text": "Long-term greenhouse gas release can increase",
-        "explanation": "Thawing permafrost releases stored carbon, contributing to greenhouse gas emissions."
-      },
-      {
-        "image": "",
-        "text": "Global greenhouse gases decrease quickly",
-        "explanation": "Thawing permafrost releases stored carbon, contributing to greenhouse gas emissions."
-      },
-      {
-        "image": "",
-        "text": "Only ocean salinity changes, not climate",
-        "explanation": "Thawing permafrost releases stored carbon, contributing to greenhouse gas emissions."
-      }
-    ],
-    "correctIndex": 0,
-    "bg": "#ff77a8"
-  },
-  {
-    "id": "q4",
-    "title": "Critical Data Question 4",
-    "scenario": "The Arctic warms several times faster than the global average.",
-    "question": "Which action helps reduce future warming pressure the most?",
-    "options": [
-      {
-        "image": "",
-        "text": "Higher fossil fuel use for short-term growth",
-        "explanation": "Using more fossil fuels increases greenhouse gas emissions, contributing to global warming."
-      },
-      {
-        "image": "",
-        "text": "Slowing clean-energy rollout until later",
-        "explanation": "Delaying clean energy adoption prolongs reliance on fossil fuels, increasing emissions."
-      },
-      {
-        "image": "",
-        "text": "Reducing emissions through efficiency and clean energy",
-        "explanation": "Implementing energy efficiency measures and transitioning to clean energy sources reduces greenhouse gas emissions, mitigating future warming."
+        "image": "/q2_option_3.png",
+        "text": "A cold ocean surrounded by land",
+        "explanation": "The Arctic is the Arctic Ocean, covered by sea ice and surrounded by northern land areas."
       }
     ],
     "correctIndex": 2,
-    "bg": "#ff692f"
+    "bg": "#00b5ff",
+    "media": []
+  },
+  {
+    "id": "q3",
+    "title": "Arctic Question 3",
+    "scenario": "Scientists can study Arctic sea ice over many years by observing it from above.",
+    "question": "How was the sea-ice age data collected?",
+    "options": [
+      {
+        "image": "/q3_option_1.png",
+        "text": "From satellites looking at the ocean",
+        "explanation": "Satellites observe sea ice from space, helping scientists map and track changes across the Arctic Ocean."
+      },
+      {
+        "image": "/q3_option_2.png",
+        "text": "From measuring stick/tape",
+        "explanation": "A measuring stick or tape cannot measure sea-ice age across the whole Arctic Ocean."
+      },
+      {
+        "image": "/q3_option_3.png",
+        "text": "From laboratory",
+        "explanation": "Laboratory work can help study samples, but this type of large-scale sea-ice age data comes from satellite observations."
+      }
+    ],
+    "correctIndex": 0,
+    "bg": "#ff77a8",
+    "media": []
+  },
+  {
+    "id": "q4",
+    "title": "Arctic Question 4",
+    "scenario": "Arctic sea ice grows during the cold dark winter and melts during the warmer summer.",
+    "question": "Which month has the most sea ice?",
+    "options": [
+      {
+        "image": "/q4_option_1.png",
+        "text": "March",
+        "explanation": "Arctic sea ice usually reaches its yearly maximum around March, after the winter freezing season."
+      },
+      {
+        "image": "/q4_option_2.png",
+        "text": "June",
+        "explanation": "By June, the Arctic has entered the melt season, so sea ice is usually decreasing."
+      },
+      {
+        "image": "/q4_option_3.png",
+        "text": "October",
+        "explanation": "October is after the summer minimum, when sea ice starts growing again, but it is not usually the maximum month."
+      }
+    ],
+    "correctIndex": 0,
+    "bg": "#ff692f",
+    "media": []
+  },
+  {
+    "id": "q5",
+    "title": "Arctic Question 5",
+    "scenario": "Some years have much less Arctic sea ice than others, especially in more recent decades.",
+    "question": "Which years have the least sea ice?",
+    "options": [
+      {
+        "image": "/q5_option_1.png",
+        "text": "1984, 2001, 2005 and 2023",
+        "explanation": "This group includes years that are not the lowest sea-ice years in the dataset."
+      },
+      {
+        "image": "/q5_option_2.png",
+        "text": "2008, 2013, 2017 and 2021",
+        "explanation": "These are the years identified in the activity as having the least sea ice."
+      },
+      {
+        "image": "/q5_option_3.png",
+        "text": "1989, 1993, 2006 and 2024",
+        "explanation": "This group does not match the least sea-ice years identified in the activity."
+      }
+    ],
+    "correctIndex": 1,
+    "bg": "#8d7bff",
+    "media": []
   }
 ]
