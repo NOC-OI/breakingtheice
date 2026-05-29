@@ -6,10 +6,9 @@ import maplibregl from 'maplibre-gl';
 import { ZarrLayer, type Selector } from '@carbonplan/zarr-layer';
 import { allColorScales, colormapBuilder } from 'zarr-cesium';
 import { ASSETS } from './assets';
+import { addOceanAndSeaLabels } from './mapOceanSeaLayers';
+import { MapYearLegend } from './MapYearLegend';
 import { TimeSlider } from './TimeSlider';
-
-const START_YEAR = 1984;
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const ZARR_LAYER_ID = 'arctic-ice-age-layer';
 
@@ -260,6 +259,11 @@ export function MapPage({
     return Array.from({ length: LEGEND_BINS }, (_, index) => {
       const start = min + binWidth * index;
       const end = min + binWidth * (index + 1);
+
+      if (index === LEGEND_BINS - 1) {
+        return `${format(start)}+`;
+      }
+
       return `${format(start)}-${format(end)}`;
     });
   }, [layerClim]);
@@ -327,179 +331,7 @@ export function MapPage({
 
       zarrLayerRef.current = zarrLayer;
       map.addLayer(zarrLayer);
-      map.addSource('ocean-labels', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: [
-            {
-              type: 'Feature',
-              properties: { name: 'Arctic Ocean' },
-              geometry: { type: 'Point', coordinates: [-10, 82] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'North Atlantic Ocean' },
-              geometry: { type: 'Point', coordinates: [-35, 35] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Pacific Ocean' },
-              geometry: { type: 'Point', coordinates: [-150, 10] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Indian Ocean' },
-              geometry: { type: 'Point', coordinates: [80, -25] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Southern Ocean' },
-              geometry: { type: 'Point', coordinates: [0, -60] }
-            }
-          ]
-        }
-      });
-
-      map.addLayer({
-        id: 'ocean-labels',
-        type: 'symbol',
-        source: 'ocean-labels',
-        layout: {
-          'text-field': ['get', 'name'],
-          'text-font': ['Noto Sans Italic'],
-          'text-size': ['interpolate', ['linear'], ['zoom'], 1, 14, 4, 22],
-          'text-letter-spacing': 0.12,
-          'text-max-width': 12,
-          'text-allow-overlap': false,
-          'symbol-placement': 'point'
-        },
-        paint: {
-          'text-color': '#3b6f92',
-          'text-halo-color': 'rgba(255, 255, 255, 0.65)',
-          'text-halo-width': 1.2,
-          'text-opacity': ['interpolate', ['linear'], ['zoom'], 1, 0.75, 5, 0.35]
-        }
-      });
-      map.addSource('arctic-sea-labels', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: [
-            // Central ocean
-            {
-              type: 'Feature',
-              properties: { name: 'Arctic Ocean', kind: 'ocean' },
-              geometry: { type: 'Point', coordinates: [-35, 84] }
-            },
-
-            // Marginal seas around the Arctic Ocean
-            {
-              type: 'Feature',
-              properties: { name: 'Beaufort Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [-140, 72] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Chukchi Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [-170, 70] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'East Siberian Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [160, 73] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Laptev Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [125, 75] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Kara Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [75, 74] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Barents Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [38, 74] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Pechora Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [55, 69.5] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'White Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [38, 65.5] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Greenland Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [-5, 75] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Norwegian Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [0, 68] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Lincoln Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [-55, 83] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Wandel Sea', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [-15, 82] }
-            },
-
-            // Optional, useful if your map extends toward Canada/Greenland
-            {
-              type: 'Feature',
-              properties: { name: 'Baffin Bay', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [-68, 74] }
-            },
-            {
-              type: 'Feature',
-              properties: { name: 'Hudson Bay', kind: 'sea' },
-              geometry: { type: 'Point', coordinates: [-85, 60] }
-            }
-          ]
-        }
-      });
-
-      map.addLayer({
-        id: 'arctic-sea-labels',
-        type: 'symbol',
-        source: 'arctic-sea-labels',
-        minzoom: 1,
-        layout: {
-          'text-field': ['get', 'name'],
-          'text-font': ['Noto Sans Italic'],
-          'text-size': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            1,
-            ['case', ['==', ['get', 'kind'], 'ocean'], 16, 11],
-            4,
-            ['case', ['==', ['get', 'kind'], 'ocean'], 26, 17]
-          ],
-          'text-letter-spacing': ['case', ['==', ['get', 'kind'], 'ocean'], 0.16, 0.08],
-          'text-max-width': 18,
-          'text-allow-overlap': false,
-          'text-ignore-placement': false,
-          'symbol-placement': 'point'
-        },
-        paint: {
-          'text-color': '#111111',
-          'text-halo-color': 'rgba(255, 255, 255, 0.75)',
-          'text-halo-width': 1.2,
-          'text-opacity': 0.95
-        }
-      });
+      addOceanAndSeaLabels(map);
     });
 
     mapRef.current = map;
@@ -527,12 +359,6 @@ export function MapPage({
     void zarrLayer.setSelector(selector);
   }, [yearIndex]);
 
-  const currentYear = useMemo(() => {
-    const year = START_YEAR + Math.floor(yearIndex / 12);
-    const month = MONTHS[yearIndex % 12];
-    return `${month} ${year}`;
-  }, [yearIndex]);
-
   function handleStartOrResumeClick() {
     if (startButtonTimerRef.current) {
       window.clearTimeout(startButtonTimerRef.current);
@@ -552,35 +378,11 @@ export function MapPage({
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.1),rgba(0,0,0,0.55)_75%)]" />
       </div>
 
-      <div className="absolute left-6 top-6 z-20 flex flex-col gap-2">
-        <div className="flex h-14 w-max items-center rounded-md px-4 text-3xl font-extrabold tracking-wide text-white sm:text-4xl">
-          {currentYear}
-        </div>
-        <div className="rounded-md bg-black/45 px-3 py-2 text-white">
-          <div className="mt-1 flex items-center justify-center text-[10px] font-bold uppercase tracking-wide text-white/85">
-            <span>Sea Ice Age</span>
-          </div>
-          <div className="grid w-48 grid-cols-5 gap-0.5" aria-hidden>
-            {legendColormap.map((color, index) => (
-              <span
-                key={`${color}-${index}`}
-                className="h-2.5 first:rounded-l-full last:rounded-r-full"
-                style={{ backgroundColor: color }}
-              />
-            ))}
-          </div>
-          <div className="mt-0.5 grid w-48 grid-cols-5 text-[10px] font-extrabold tracking-wide text-white">
-            {legendLabels.map(label => (
-              <span key={label} className="text-center">
-                {label}
-              </span>
-            ))}
-          </div>
-          <div className="mt-1 flex items-center justify-center text-[10px] font-bold uppercase tracking-wide text-white/85">
-            <span>Years</span>
-          </div>
-        </div>
-      </div>
+      <MapYearLegend
+        yearIndex={yearIndex}
+        legendColormap={legendColormap}
+        legendLabels={legendLabels}
+      />
 
       <button
         type="button"
