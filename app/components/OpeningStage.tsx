@@ -46,10 +46,10 @@ export function OpeningStage({ onPlay, onMinimize }: OpeningStageProps) {
 
       <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center">
         <div className="max-w-280">
-          <h1 className="font-[Baloo_2] text-[clamp(3.9rem,8vw,8.5rem)] font-black leading-none tracking-[-0.04em] text-[#00b5ff] drop-shadow-[0_5px_0_rgba(0,0,0,0.35)] sm:text-[clamp(5.5rem,9vw,8.5rem)]">
+          <h1 className="font-rl-aqva-black text-[clamp(3.9rem,8vw,8.5rem)] font-black leading-none tracking-[-0.04em] text-[#00b5ff] drop-shadow-[0_5px_0_rgba(0,0,0,0.35)] sm:text-[clamp(5.5rem,9vw,8.5rem)]">
             CLIMATE QUEST
           </h1>
-          <p className="mx-auto mt-2 max-w-270.75 font-[Baloo_2] text-[clamp(2.2rem,5vw,5.75rem)] font-black leading-[1.02] tracking-[-0.03em] text-[#00b5ff] drop-shadow-[0_4px_0_rgba(0,0,0,0.3)]">
+          <p className="mx-auto mt-2 max-w-270.75 font-rl-aqva-black text-[clamp(2.2rem,5vw,5.75rem)] font-black leading-[1.02] tracking-[-0.03em] text-[#00b5ff] drop-shadow-[0_4px_0_rgba(0,0,0,0.3)]">
             Arctic Ice Investigators
           </p>
         </div>

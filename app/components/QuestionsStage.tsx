@@ -40,7 +40,7 @@ export function QuestionsStage({
     >
       <div className="relative mx-auto h-full w-[min(1440px,96vw)] px-4 pb-8 pt-19 sm:px-8 lg:px-18">
         <div className="max-w-197.5 text-[#0d3352]">
-          <h2 className="font-[Baloo_2] text-[clamp(2.1rem,4vw,4rem)] font-extrabold leading-[1.05]">
+          <h2 className="font-rl-aqva-black text-[clamp(2.1rem,4vw,4rem)] font-extrabold leading-[1.05]">
             {question.title}
           </h2>
 

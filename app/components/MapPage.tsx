@@ -8,12 +8,12 @@ import { allColorScales, colormapBuilder } from 'zarr-cesium';
 import { ASSETS } from './assets';
 import { addOceanAndSeaLabels } from './mapOceanSeaLayers';
 import { MapYearLegend } from './MapYearLegend';
+import { DATASET_CONFIG, normalizeDatasetMode, type DatasetMode } from './mapDataset';
 import { TimeSlider } from './TimeSlider';
 
 const ZARR_LAYER_ID = 'arctic-ice-age-layer';
 
 const ICE_COLORMAP = ['#4E5F6C', '#687582', '#83929B', '#A8B6BE', '#C7D7DE'];
-const DEFAULT_CLIM: [number, number] = [0, 5];
 const LEGEND_BINS = 5;
 const QUERY_COLORMAP_STEPS = 255;
 const MAX_SHADER_COLOR_STOPS = 24;
@@ -173,10 +173,15 @@ export function MapPage({
   const zarrLayerRef = useRef<ZarrLayer | null>(null);
   const yearIndexRef = useRef(yearIndex);
   const startButtonTimerRef = useRef<number | null>(null);
+  const [isMapReady, setIsMapReady] = useState(false);
   const [isStartButtonPressing, setIsStartButtonPressing] = useState(false);
   const [queryColormapParam, setQueryColormapParam] = useState<string | null>(null);
   const [queryClimParam, setQueryClimParam] = useState<string | null>(null);
+  const [datasetMode, setDatasetMode] = useState<DatasetMode>('normal');
   const [queryParamsInitialized, setQueryParamsInitialized] = useState(false);
+
+  const activeDatasetConfig = DATASET_CONFIG[datasetMode];
+  const layerSource = activeDatasetConfig.sourceUrl;
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -184,8 +189,30 @@ export function MapPage({
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setQueryColormapParam(params.get('colormap'));
     setQueryClimParam(params.get('clim'));
+    setDatasetMode(normalizeDatasetMode(params.get('dataset')));
     setQueryParamsInitialized(true);
   }, []);
+
+  useEffect(() => {
+    if (!queryParamsInitialized) {
+      return;
+    }
+
+    onChangeYear(0);
+  }, [datasetMode, onChangeYear, queryParamsInitialized]);
+
+  useEffect(() => {
+    if (!queryParamsInitialized) {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    params.set('dataset', datasetMode);
+
+    const queryString = params.toString();
+    const nextUrl = `${window.location.pathname}${queryString ? `?${queryString}` : ''}${window.location.hash}`;
+    window.history.replaceState({}, '', nextUrl);
+  }, [datasetMode, queryParamsInitialized]);
 
   const queryColormapName = useMemo(() => {
     const value = queryColormapParam?.trim();
@@ -213,9 +240,10 @@ export function MapPage({
   }, [queryColormapName]);
 
   const layerClim = useMemo<[number, number]>(() => {
+    const defaultClim = activeDatasetConfig.defaultClim;
     const value = queryClimParam?.trim();
     if (!value) {
-      return DEFAULT_CLIM;
+      return defaultClim;
     }
 
     const [startRaw, endRaw] = value.split(',');
@@ -224,11 +252,11 @@ export function MapPage({
 
     if (!Number.isFinite(start) || !Number.isFinite(end) || start >= end) {
       console.warn(`[MapPage] Invalid clim query param: ${value}. Falling back to default 0,5.`);
-      return DEFAULT_CLIM;
+      return defaultClim;
     }
 
     return [start, end];
-  }, [queryClimParam]);
+  }, [activeDatasetConfig.defaultClim, queryClimParam]);
 
   const legendColormap = useMemo(() => {
     if (layerColormap.length <= LEGEND_BINS) {
@@ -268,13 +296,10 @@ export function MapPage({
     });
   }, [layerClim]);
 
-  const layerCustomFrag = useMemo(() => {
-    if (queryColormapName === null) {
-      return ICE_AGE_CUSTOM_FRAG;
-    }
-
-    return buildCustomFragFromColormap(layerColormap, layerClim);
-  }, [layerClim, layerColormap, queryColormapName]);
+  const layerCustomFrag = useMemo(
+    () => buildCustomFragFromColormap(layerColormap, layerClim),
+    [layerClim, layerColormap]
+  );
 
   useEffect(() => {
     return () => {
@@ -287,6 +312,18 @@ export function MapPage({
   useEffect(() => {
     yearIndexRef.current = yearIndex;
   }, [yearIndex]);
+
+  function buildLayerSelector(mode: DatasetMode, selectedIndex: number): Selector {
+    if (mode === 'climatology') {
+      return { month: { selected: selectedIndex, type: 'index' } };
+    }
+
+    if (mode === 'yearly') {
+      return { time: { selected: selectedIndex * 12 + 3, type: 'index' } };
+    }
+
+    return { time: { selected: selectedIndex, type: 'index' } };
+  }
 
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) {
@@ -309,29 +346,8 @@ export function MapPage({
 
     map.on('load', () => {
       map.setProjection({ type: 'globe' });
-
-      const selector: Selector = {
-        time: { selected: yearIndexRef.current, type: 'index' }
-      };
-
-      const zarrLayer = new ZarrLayer({
-        id: ZARR_LAYER_ID,
-        source: 'https://atlantis-vis-o.s3-ext.jc.rl.ac.uk/openday/age_of_sea_ice.zarr',
-        variable: 'age_of_sea_ice',
-        clim: layerClim,
-        fillValue: 21,
-        colormap: ICE_COLORMAP,
-        zarrVersion: 3,
-        bounds: [-4518421.5, -4518421.5, 4518421.5, 4518421.5],
-        proj4:
-          '+proj=laea +lat_0=90 +lon_0=0 +x_0=0 +y_0=0 +a=6371228 +b=6371228 +units=m +no_defs',
-        selector,
-        customFrag: layerCustomFrag
-      });
-
-      zarrLayerRef.current = zarrLayer;
-      map.addLayer(zarrLayer);
       addOceanAndSeaLabels(map);
+      setIsMapReady(true);
     });
 
     mapRef.current = map;
@@ -343,8 +359,39 @@ export function MapPage({
       map.remove();
       mapRef.current = null;
       zarrLayerRef.current = null;
+      setIsMapReady(false);
     };
-  }, [layerClim, layerCustomFrag, queryParamsInitialized]);
+  }, [queryParamsInitialized]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !isMapReady) {
+      return;
+    }
+
+    if (map.getLayer(ZARR_LAYER_ID)) {
+      map.removeLayer(ZARR_LAYER_ID);
+    }
+    zarrLayerRef.current = null;
+
+    const selector = buildLayerSelector(datasetMode, yearIndexRef.current);
+    const zarrLayer = new ZarrLayer({
+      id: ZARR_LAYER_ID,
+      source: layerSource,
+      variable: 'age_of_sea_ice',
+      clim: layerClim,
+      fillValue: 21,
+      colormap: ICE_COLORMAP,
+      zarrVersion: 3,
+      bounds: [-4518421.5, -4518421.5, 4518421.5, 4518421.5],
+      proj4: '+proj=laea +lat_0=90 +lon_0=0 +x_0=0 +y_0=0 +a=6371228 +b=6371228 +units=m +no_defs',
+      selector,
+      customFrag: layerCustomFrag
+    });
+
+    zarrLayerRef.current = zarrLayer;
+    map.addLayer(zarrLayer);
+  }, [datasetMode, isMapReady, layerClim, layerCustomFrag, layerSource]);
 
   useEffect(() => {
     const zarrLayer = zarrLayerRef.current;
@@ -352,12 +399,10 @@ export function MapPage({
       return;
     }
 
-    const selector: Selector = {
-      time: { selected: yearIndex, type: 'index' }
-    };
+    const selector = buildLayerSelector(datasetMode, yearIndex);
 
     void zarrLayer.setSelector(selector);
-  }, [yearIndex]);
+  }, [yearIndex, datasetMode]);
 
   function handleStartOrResumeClick() {
     if (startButtonTimerRef.current) {
@@ -380,8 +425,10 @@ export function MapPage({
 
       <MapYearLegend
         yearIndex={yearIndex}
+        datasetMode={datasetMode}
         legendColormap={legendColormap}
         legendLabels={legendLabels}
+        legendUnitLabel={activeDatasetConfig.legendUnitLabel}
       />
 
       <button
@@ -391,7 +438,9 @@ export function MapPage({
           isStartButtonPressing ? 'scale-105' : 'scale-100'
         }`}
       >
-        <span>{hasQuestStarted ? 'Resume Quest' : 'Start Quest'}</span>
+        <span className="font-rl-aqva-black">
+          {hasQuestStarted ? 'Resume Quest' : 'Start Quest'}
+        </span>
         <Image
           src={ASSETS.bearZoom}
           alt="Quest agent"
@@ -403,9 +452,11 @@ export function MapPage({
 
       <TimeSlider
         yearIndex={yearIndex}
+        datasetMode={datasetMode}
         timelineVisible={timelineVisible}
         onToggleTimeline={onToggleTimeline}
         onChangeYear={onChangeYear}
+        onChangeDatasetMode={setDatasetMode}
       />
     </section>
   );

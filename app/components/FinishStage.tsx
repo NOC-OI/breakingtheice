@@ -9,7 +9,7 @@ export function FinishStage({ onFinish }: FinishStageProps) {
   return (
     <section className="relative z-20 h-full w-full overflow-auto bg-[#0d3352] text-white">
       <div className="mx-auto flex min-h-full w-[min(1400px,96vw)] flex-col px-5 pb-10 pt-8 sm:px-8 sm:pt-14">
-        <h2 className="font-[Baloo_2] text-5xl font-extrabold leading-tight sm:max-w-2xl sm:text-7xl">
+        <h2 className="font-rl-aqva-black text-5xl font-extrabold leading-tight sm:max-w-2xl sm:text-7xl">
           Great work.
           <br />
           But we can all do more!
