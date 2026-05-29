@@ -7,8 +7,20 @@ type MapYearLegendProps = {
 };
 
 const START_YEAR = 1984;
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
+const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
 export function MapYearLegend({
   yearIndex,
   datasetMode,
@@ -22,8 +34,8 @@ export function MapYearLegend({
     datasetMode === 'yearly'
       ? `${START_YEAR + yearIndex}`
       : datasetMode === 'climatology'
-        ? month
-        : `${month} ${year}`;
+        ? `${month.slice(0, 3)}`
+        : `${year} ${month.slice(0, 3)}`;
 
   return (
     <div className="absolute left-6 top-6 z-20 flex flex-col gap-2">
