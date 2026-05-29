@@ -77,10 +77,10 @@ export function TimeSlider({
 
     const playbackSettings: Record<PlaybackMode, { step: number; intervalMs: number }> = {
       paused: { step: 0, intervalMs: 0 },
-      play: { step: 1, intervalMs: 150 },
-      fast: { step: 1, intervalMs: 75 },
-      faster: { step: 1, intervalMs: 30 },
-      evenfaster: { step: 1, intervalMs: 15 }
+      play: { step: 1, intervalMs: 300 },
+      fast: { step: 1, intervalMs: 150 },
+      faster: { step: 1, intervalMs: 75 },
+      evenfaster: { step: 1, intervalMs: 30 }
     };
 
     const { intervalMs, step } = playbackSettings[playbackMode];
