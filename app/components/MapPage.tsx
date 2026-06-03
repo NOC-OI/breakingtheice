@@ -6,7 +6,7 @@ import maplibregl from 'maplibre-gl';
 import { ZarrLayer, type Selector } from '@carbonplan/zarr-layer';
 import { allColorScales, colormapBuilder } from 'zarr-cesium';
 import { ASSETS } from './assets';
-import { addOceanAndSeaLabels } from './mapOceanSeaLayers';
+import { addOceanAndSeaLabels, bringOceanAndSeaLabelsToFront } from './mapOceanSeaLayers';
 import { MapYearLegend } from './MapYearLegend';
 import { DATASET_CONFIG, normalizeDatasetMode, type DatasetMode } from './mapDataset';
 import { TimeSlider } from './TimeSlider';
@@ -173,7 +173,9 @@ export function MapPage({
   const zarrLayerRef = useRef<ZarrLayer | null>(null);
   const yearIndexRef = useRef(yearIndex);
   const startButtonTimerRef = useRef<number | null>(null);
+  const zarrLoadRequestRef = useRef(0);
   const [isMapReady, setIsMapReady] = useState(false);
+  const [isZarrLoading, setIsZarrLoading] = useState(false);
   const [isStartButtonPressing, setIsStartButtonPressing] = useState(false);
   const [queryColormapParam, setQueryColormapParam] = useState<string | null>(null);
   const [queryClimParam, setQueryClimParam] = useState<string | null>(null);
@@ -313,6 +315,20 @@ export function MapPage({
     yearIndexRef.current = yearIndex;
   }, [yearIndex]);
 
+  function beginZarrLoad(requestMap: maplibregl.Map): number {
+    const requestId = zarrLoadRequestRef.current + 1;
+    zarrLoadRequestRef.current = requestId;
+    setIsZarrLoading(true);
+
+    requestMap.once('idle', () => {
+      if (zarrLoadRequestRef.current === requestId) {
+        setIsZarrLoading(false);
+      }
+    });
+
+    return requestId;
+  }
+
   function buildLayerSelector(mode: DatasetMode, selectedIndex: number): Selector {
     if (mode === 'climatology') {
       return { month: { selected: selectedIndex, type: 'index' } };
@@ -359,6 +375,8 @@ export function MapPage({
       map.remove();
       mapRef.current = null;
       zarrLayerRef.current = null;
+      zarrLoadRequestRef.current += 1;
+      setIsZarrLoading(false);
       setIsMapReady(false);
     };
   }, [queryParamsInitialized]);
@@ -375,12 +393,12 @@ export function MapPage({
     zarrLayerRef.current = null;
 
     const selector = buildLayerSelector(datasetMode, yearIndexRef.current);
+    beginZarrLoad(map);
     const zarrLayer = new ZarrLayer({
       id: ZARR_LAYER_ID,
       source: layerSource,
       variable: 'age_of_sea_ice',
       clim: layerClim,
-      fillValue: 21,
       colormap: ICE_COLORMAP,
       zarrVersion: 3,
       bounds: [-4518421.5, -4518421.5, 4518421.5, 4518421.5],
@@ -391,17 +409,25 @@ export function MapPage({
 
     zarrLayerRef.current = zarrLayer;
     map.addLayer(zarrLayer);
+    bringOceanAndSeaLabelsToFront(map);
   }, [datasetMode, isMapReady, layerClim, layerCustomFrag, layerSource]);
 
   useEffect(() => {
+    const map = mapRef.current;
     const zarrLayer = zarrLayerRef.current;
-    if (!zarrLayer) {
+    if (!map || !zarrLayer) {
       return;
     }
 
+    const requestId = beginZarrLoad(map);
     const selector = buildLayerSelector(datasetMode, yearIndex);
 
-    void zarrLayer.setSelector(selector);
+    void zarrLayer.setSelector(selector).catch(error => {
+      if (zarrLoadRequestRef.current === requestId) {
+        setIsZarrLoading(false);
+      }
+      console.error('[MapPage] Failed to update zarr selector.', error);
+    });
   }, [yearIndex, datasetMode]);
 
   function handleStartOrResumeClick() {
@@ -417,7 +443,7 @@ export function MapPage({
   }
 
   return (
-    <section className="relative z-10 h-full w-full">
+    <section className="font-test-sohne relative z-10 h-full w-full">
       <div className="absolute inset-0">
         <div ref={mapContainerRef} className="h-full w-full" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.1),rgba(0,0,0,0.55)_75%)]" />
@@ -457,6 +483,7 @@ export function MapPage({
         onToggleTimeline={onToggleTimeline}
         onChangeYear={onChangeYear}
         onChangeDatasetMode={setDatasetMode}
+        isZarrLoading={isZarrLoading}
       />
     </section>
   );

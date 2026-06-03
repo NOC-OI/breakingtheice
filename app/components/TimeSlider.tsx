@@ -17,6 +17,7 @@ type TimeSliderProps = {
   yearIndex: number;
   datasetMode: DatasetMode;
   timelineVisible: boolean;
+  isZarrLoading: boolean;
   onToggleTimeline: () => void;
   onChangeYear: (index: number) => void;
   onChangeDatasetMode: (mode: DatasetMode) => void;
@@ -25,6 +26,7 @@ export function TimeSlider({
   yearIndex,
   datasetMode,
   timelineVisible,
+  isZarrLoading,
   onToggleTimeline,
   onChangeYear,
   onChangeDatasetMode
@@ -169,7 +171,7 @@ export function TimeSlider({
   }
 
   return (
-    <div className="absolute bottom-8 left-1/2 z-20 h-37.25 w-[80vw] -translate-x-1/2">
+    <div className="absolute bottom-8 left-1/2 z-20 h-52 w-[80vw] -translate-x-1/2">
       <div
         className={`relative ml-auto flex text-white shadow-xl transition-[width,height,padding] duration-300 ease-out ${
           timelineVisible
@@ -209,22 +211,15 @@ export function TimeSlider({
           }`}
         >
           <div className="mb-6 flex items-center justify-between gap-4">
-            <p className="text-sm font-bold text-[#d8e6f5] sm:text-2xl">
+            <p className="flex items-center gap-2 text-sm text-[#d8e6f5] sm:text-2xl">
               Scroll across to see how ice cover changes over time
+              {isZarrLoading ? (
+                <span
+                  className="ml-1 inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-[#d8e6f5]/40 border-t-[#d8e6f5] align-middle sm:h-4 sm:w-4"
+                  aria-label="Loading sea ice layer"
+                />
+              ) : null}
             </p>
-
-            <DatasetModeControl mode={datasetMode} onChangeMode={handleDatasetModeChange} />
-
-            <TimelinePlayControls
-              playbackMode={playbackMode}
-              datasetMode={datasetMode}
-              onCyclePlayback={handlePlaybackCycle}
-              onPause={() => setPlaybackMode('paused')}
-              onPreviousMonth={handleBefore}
-              onPreviousYear={handleLastYear}
-              onNextMonth={handleNext}
-              onNextYear={handleNextYear}
-            />
           </div>
           <div className="mb-0 hidden h-4.5 text-[10px] font-bold sm:block -mr-2">
             <div className="relative h-full w-full">
@@ -300,6 +295,30 @@ export function TimeSlider({
       [&::-moz-range-thumb]:bg-black
     "
             />
+          </div>
+          <div className="flex justify-between pt-2 h-15 items-end">
+            <TimelinePlayControls
+              playbackMode={playbackMode}
+              datasetMode={datasetMode}
+              onCyclePlayback={handlePlaybackCycle}
+              onPause={() => setPlaybackMode('paused')}
+              onPreviousMonth={handleBefore}
+              onPreviousYear={handleLastYear}
+              onNextMonth={handleNext}
+              onNextYear={handleNextYear}
+            />
+            <p className="text-xs text-[#d8e6f5]">
+              Data used in model was collected by satellite - can be found at{' '}
+              <a
+                className="text-[#d8e6f5] underline"
+                href="https://nsidc.org/data/nsidc-0611/versions/4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                nsidc.org
+              </a>
+            </p>
+            <DatasetModeControl mode={datasetMode} onChangeMode={handleDatasetModeChange} />
           </div>
         </div>
       </div>

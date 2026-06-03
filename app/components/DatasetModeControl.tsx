@@ -2,11 +2,11 @@ import type { DatasetMode } from './mapDataset';
 
 const MODE_LABELS: Record<DatasetMode, string> = {
   normal: 'Month',
-  climatology: 'Clima',
-  yearly: 'Year'
+  yearly: 'Year',
+  climatology: 'Average (month)'
 };
 
-const MODE_ORDER: DatasetMode[] = ['normal', 'climatology', 'yearly'];
+const MODE_ORDER: DatasetMode[] = ['normal', 'yearly', 'climatology'];
 
 type DatasetModeControlProps = {
   mode: DatasetMode;
@@ -14,39 +14,29 @@ type DatasetModeControlProps = {
 };
 
 export function DatasetModeControl({ mode, onChangeMode }: DatasetModeControlProps) {
-  const selectedIndex = MODE_ORDER.indexOf(mode);
-  const safeSelectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
-  const thumbLeftPercent = (safeSelectedIndex * 100) / MODE_ORDER.length;
-  const thumbWidthPercent = 100 / MODE_ORDER.length;
-
   function handleChange(nextMode: DatasetMode) {
     onChangeMode(nextMode);
   }
 
   return (
-    <div className="w-56 text-white" role="radiogroup" aria-label="Dataset mode">
-      <div className="relative grid h-7 w-full grid-cols-3 overflow-hidden rounded-md border border-white/25 bg-white/10">
-        <span
-          aria-hidden
-          className="pointer-events-none absolute bottom-0.5 top-0.5 rounded-sm bg-[#00b5ff] shadow-[0_0_0_1px_rgba(0,0,0,0.15)] transition-all duration-200"
-          style={{
-            left: `calc(${thumbLeftPercent}% + 2px)`,
-            width: `calc(${thumbWidthPercent}% - 4px)`
-          }}
-        />
-        {MODE_ORDER.map(option => (
-          <button
-            key={option}
-            type="button"
-            role="radio"
-            aria-checked={option === mode}
-            onClick={() => handleChange(option)}
-            className={`relative z-10 cursor-pointer items-center text-center text-[10px] font-extrabold uppercase tracking-wide transition-colors ${
-              option === mode ? 'text-[#0d3352]' : 'text-white/80 hover:text-white'
-            }`}
-          >
-            {MODE_LABELS[option]}
-          </button>
+    <div className="text-white" role="radiogroup" aria-label="Dataset mode">
+      <div className="relative grid w-full grid-cols-3 gap-2 ">
+        {MODE_ORDER.map((option, index) => (
+          <div className="w-full" key={index}>
+            {index === 0 && <p className="text-[0.6rem] text-[#C0C0C0]">VIEW DATA BY:</p>}
+            {index === 1 && <p className="text-[0.6rem] opacity-0">x</p>}
+            {index === 2 && <p className="text-[0.6rem] text-[#C0C0C0]">CLIMATOLOGY</p>}
+            <button
+              key={option}
+              type="button"
+              role="radio"
+              aria-checked={option === mode}
+              onClick={() => handleChange(option)}
+              className={`border border-white/25 relative px-4 w-full py-1 z-10 text-center tracking-wide items-center justify-center rounded-md bg-white/10 text-[0.7rem] text-white transition hover:bg-white/25 cursor-pointer  hover:text-white ${option === mode ? 'bg-white/25' : ''}`}
+            >
+              {MODE_LABELS[option]}
+            </button>
+          </div>
         ))}
       </div>
     </div>

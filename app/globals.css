@@ -29,3 +29,7 @@ body {
   font-weight: 900;
   font-style: normal;
 }
+
+.font-test-sohne {
+  font-family: var(--font-test-sohne), 'Nunito', var(--font-geist-sans), sans-serif;
+}

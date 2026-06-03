@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
 const geistSans = Geist({
@@ -10,6 +11,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin']
+});
+
+const testSohne = localFont({
+  src: '../public/TestSohne-Kraftig-BF663d89cd37e26.otf',
+  variable: '--font-test-sohne',
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
@@ -23,7 +30,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${testSohne.variable} h-full antialiased`}
+    >
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/gdk0ajh.css" />
       </head>

@@ -39,7 +39,7 @@ export function MapYearLegend({
 
   return (
     <div className="absolute left-6 top-6 z-20 flex flex-col gap-2">
-      <div className="flex h-14 w-max items-center rounded-md px-4 text-3xl font-extrabold tracking-wide text-white sm:text-4xl">
+      <div className="flex h-14 w-max items-center rounded-md px-4 text-3xl font-bold tracking-wide text-white sm:text-4xl">
         {currentTimeLabel}
       </div>
       <div className="rounded-md bg-black/45 px-3 py-2 text-white">

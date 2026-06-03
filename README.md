@@ -34,6 +34,15 @@ This repository contains the frontend for the interactive experience, built with
 npm ci
 ```
 
+## Dependency Patches
+
+This project uses `patch-package` to persist a local fix for `@carbonplan/zarr-layer`.
+
+1. Patch file: `patches/@carbonplan+zarr-layer+0.5.0.patch`
+2. Applied automatically via the `postinstall` script in `package.json`
+
+If the `@carbonplan/zarr-layer` version changes, regenerate the patch for the new version.
+
 ### Start development server
 
 ```bash

@@ -1,0 +1,13 @@
+diff --git a/node_modules/@carbonplan/zarr-layer/dist/index.js b/node_modules/@carbonplan/zarr-layer/dist/index.js
+index f2de1db..d3e2e61 100644
+--- a/node_modules/@carbonplan/zarr-layer/dist/index.js
++++ b/node_modules/@carbonplan/zarr-layer/dist/index.js
+@@ -6076,7 +6076,7 @@ var UntiledMode = class {
+           if (lat > regNorth) regNorth = lat;
+         }
+         if (!hasValid) continue;
+-        if (regEast >= west && regWest <= east && regNorth >= south && regSouth <= north) {
++        if (regEast >= west && regWest <= east && regSouth <= north) {
+           regions2.push({ regionX, regionY });
+         }
+       }

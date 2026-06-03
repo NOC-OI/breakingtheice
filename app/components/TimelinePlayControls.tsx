@@ -22,8 +22,8 @@ function PlaybackIcon({ playbackMode }: { playbackMode: PlaybackMode }) {
   if (playbackMode === 'faster') {
     return (
       <span className="flex items-center gap-0.5" aria-hidden>
-        <FaPlay className="h-2.5 w-2.5" />
-        <FaForward className="h-3 w-3 ml-[-0.28rem]" />
+        <FaPlay className="h-3.5 w-3.5" />
+        <FaForward className="h-4 w-4 ml-[-0.4rem]" />
       </span>
     );
   }
@@ -31,13 +31,13 @@ function PlaybackIcon({ playbackMode }: { playbackMode: PlaybackMode }) {
   if (playbackMode === 'evenfaster') {
     return (
       <span className="flex items-center gap-0.5" aria-hidden>
-        <FaForward className="h-[0.65rem] w-[0.65rem]" />
-        <FaForward className="h-[0.65rem] w-[0.65rem] ml-[-0.20rem]" />
+        <FaForward className="h-[0.75rem] w-[0.75rem]" />
+        <FaForward className="h-[0.75rem] w-[0.75rem] ml-[-0.15rem]" />
       </span>
     );
   }
 
-  return <FaPlay aria-hidden className="h-4 w-4" />;
+  return <FaPlay aria-hidden className="h-5 w-5" />;
 }
 
 export function TimelinePlayControls({
@@ -65,17 +65,17 @@ export function TimelinePlayControls({
       <button
         type="button"
         onClick={onPreviousMonth}
-        className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
+        className="flex h-9 w-9 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
         aria-label="Previous month"
         title="Previous month"
       >
-        <FaBackwardStep aria-hidden className="h-4 w-4" />
+        <FaBackwardStep aria-hidden className="h-5 w-5" />
       </button>
 
       <button
         type="button"
         onClick={onCyclePlayback}
-        className={`flex h-8 w-8 items-center justify-center rounded-md bg-white/10 ${playbackMode === 'fast' ? 'px-2.5' : 'px-3'} text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer ${playbackMode !== 'paused' ? 'bg-white/25' : ''}`}
+        className={`flex h-9 w-9 items-center justify-center rounded-md bg-white/10 ${playbackMode === 'fast' ? 'px-2.5' : 'px-3'} text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer ${playbackMode !== 'paused' ? 'bg-white/25' : ''}`}
         aria-label="Cycle playback speed"
         title="Cycle playback speed"
       >
@@ -85,21 +85,21 @@ export function TimelinePlayControls({
       <button
         type="button"
         onClick={onPause}
-        className={`flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer ${playbackMode === 'paused' ? 'bg-white/25' : ''}`}
+        className={`flex h-9 w-9 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer ${playbackMode === 'paused' ? 'bg-white/25' : ''}`}
         aria-label="Pause timeline"
         title="Pause timeline"
       >
-        <FaPause aria-hidden className="h-4 w-4" />
+        <FaPause aria-hidden className="h-5 w-5" />
       </button>
 
       <button
         type="button"
         onClick={onNextMonth}
-        className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
+        className="flex h-9 w-9 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
         aria-label="Next month"
         title="Next month"
       >
-        <FaForwardStep aria-hidden className="h-4 w-4" />
+        <FaForwardStep aria-hidden className="h-5 w-5" />
       </button>
 
       {/*
