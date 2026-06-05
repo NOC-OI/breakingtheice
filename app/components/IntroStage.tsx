@@ -61,7 +61,7 @@ export function IntroStage({
         <Image src={ASSETS.arcticOutline} alt="" fill className="object-cover" priority />
       </div>
 
-      <div className="absolute left-[max(24px,7vw)] top-[max(28px,11vh)] border border-[#ffd21f]  z-10 w-[min(90vw,482px)] overflow-hidden rounded-lg bg-[#0d3352]  pt-4 pb-0 text-white shadow-[0_22px_34px_rgba(0,0,0,0.14),0_8px_42px_rgba(0,0,0,0.12),0_11px_14px_rgba(0,0,0,0.2)]">
+      <div className="absolute left-[max(24px,7vw)] top-[8%] xl:top-[max(28px,11vh)] border border-[#ffd21f]  z-10 w-[min(90vw,482px)] overflow-hidden rounded-lg bg-[#0d3352] pt-4 pb-0 text-white shadow-[0_22px_34px_rgba(0,0,0,0.14),0_8px_42px_rgba(0,0,0,0.12),0_11px_14px_rgba(0,0,0,0.2)]">
         <div className="flex items-center gap-4 px-5">
           <div
             className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-2xl font-black transition-colors duration-50 ${
@@ -112,28 +112,28 @@ export function IntroStage({
       </div>
 
       {showStartMission && (
-        <div className="absolute left-[max(24px,7vw)] bottom-[10vh] z-20 w-[min(92vw,1100px)] text-black">
-          <div className="pb-15">
-            <h2 className="font-['Courier_New'] text-[36px] leading-[1.2] font-bold">
+        <div className="absolute left-[max(24px,7vw)] bottom-10 xl:bottom-[10vh] z-20 w-[55%] xl:w-[min(92vw,1100px)] text-black">
+          <div className="pt-15 xl:pb-15">
+            <h2 className="font-['Courier_New'] text-[24px] xl:text-[36px] leading-[1.2] font-bold">
               Greetings Agent
             </h2>
 
-            <p className="mt-8 font-['Courier_New'] text-[26px] leading-[1.3] font-bold">
+            <p className="mt-8 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
               Across the Arctic, rising temperatures are triggering a chain reaction. Ocean currents
               are changing, glaciers and arctic ice are melting, and habitats are disappearing.
             </p>
 
-            <p className="mt-8 font-['Courier_New'] text-[26px] leading-[1.3] font-bold">
+            <p className="mt-8 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
               NOC have uncovered 5 critical data points.
             </p>
 
-            <p className="mt-8 font-['Courier_New'] text-[26px] leading-[1.3] font-bold">
+            <p className="mt-8 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
               Your mission is to read each scenario and select the correct scientific outcome. One
               wrong calculation could accelerate the damage. We need to stabilise the climate
               models, to protect our polar regions.
             </p>
 
-            <p className="mt-8 font-['Courier_New'] text-[26px] leading-[1.3] font-bold">
+            <p className="mt-8 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
               The fate of Planet Earth rests in your hands.
               <br />
               Are you ready to accept this mission?
