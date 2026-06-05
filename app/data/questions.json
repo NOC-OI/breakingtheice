@@ -225,14 +225,14 @@
     "media": [
       {
         "image": "/q5_media_1.jpg",
-        "position": "bottom",
+        "position": "top",
         "transform": "0deg",
         "width": "70",
         "height": "90"
       },
       {
         "image": "/q5_media_2.jpg",
-        "position": "top",
+        "position": "bottom",
         "transform": "8.55deg",
         "width": "90",
         "height": "90"
