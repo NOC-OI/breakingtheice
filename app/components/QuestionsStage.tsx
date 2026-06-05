@@ -76,20 +76,21 @@ export function QuestionsStage({
                     }`}
                 >
                   {option.image ? (
-                    <div className="relative h-[60%] w-full mt-2">
+                    <div className="relative h-[55%] flex items-center justify-center w-full mt-5">
                       <Image
                         src={`${BASE_PATH}${option.image}`}
                         alt={option.text}
-                        fill
+                        width={option.width}
+                        height={option.height}
                         className={`object-contain transition ${isWrongSelected ? 'grayscale opacity-60' : ''
                           }`}
                       />
                     </div>
                   ) : null}
 
-                  <div className="flex flex-1 items-center justify-center px-6 py-4">
+                  <div className="flex flex-1 items-center justify-center px-3 py-4">
                     {isSelected ? (
-                      <p className="line-clamp-4 leading-[1.2]">{option.explanation}</p>
+                      <p className="line-clamp-6 leading-[1.2]">{option.explanation}</p>
                     ) : (
                       <p className="line-clamp-4 leading-[1.2]">{option.text}</p>
                     )}
@@ -101,8 +102,9 @@ export function QuestionsStage({
                     </span>
                   )}
                   {isWrongSelected && (
-                    <span className="absolute right-3 top-3 text-2xl">
-                      <IoCloseCircle className="text-[#FF0000]" />
+                    <span className="absolute right-3 top-3 flex items-center justify-center text-2xl">
+                      <span className="absolute h-[0.6em] w-[0.6em] rounded-full bg-white" />
+                      <IoCloseCircle className="relative z-10 text-[#FF0000]" />
                     </span>
                   )}
                 </button>

@@ -8,17 +8,23 @@
       {
         "image": "/q1_option_1.png",
         "text": "At the south (bottom) of the planet. ",
-        "explanation": "The south polar region is called the Antarctic."
+        "explanation": "The south polar region is called the Antarctic.",
+        "width": 123.33,
+        "height": 127.508
       },
       {
         "image": "/q1_option_2.png",
         "text": "At the north (top) of the planet.",
-        "explanation": "The Arctic is Earth's northern polar region. It's around the North Pole."
+        "explanation": "The Arctic is Earth's northern polar region. It's around the North Pole.",
+        "width": 123.33,
+        "height": 127.508
       },
       {
         "image": "/q1_option_3.png",
         "text": "At the equator (around the middle of the planet).",
-        "explanation": "The Equator is the warm middle line around Earth. It's far from the polar Arctic region."
+        "explanation": "The Equator is the warm middle line around Earth. It's far from the polar Arctic region.",
+        "width": 186.84,
+        "height": 120.171
       }
     ],
     "correctIndex": 1,
@@ -49,17 +55,23 @@
       {
         "image": "/q2_option_1.png",
         "text": "The Arctic is a continent.",
-        "explanation": "The Arctic is not a continent. Antarctica is a continent."
+        "explanation": "The Arctic is not a continent. Antarctica is a continent.",
+        "width": 141.624,
+        "height": 128.985
       },
       {
         "image": "/q2_option_2.png",
         "text": "A cold ocean surrounded by land.",
-        "explanation": "The Arctic is the Arctic Ocean, covered by sea ice and surrounded by northern land areas."
+        "explanation": "The Arctic is the Arctic Ocean, covered by sea ice and surrounded by northern land areas.",
+        "width": 167.335,
+        "height": 135.011
       },
       {
         "image": "/q2_option_3.png",
         "text": "Land surrounded by frozen ocean.",
-        "explanation": "The Arctic is not land, on an ocean. It's ocean covered by sea ice. Penguins only live in Antarctica, not the Arctic!"
+        "explanation": "The Arctic is not land, on an ocean. It's ocean covered by sea ice. Penguins only live in Antarctica, not the Arctic!",
+        "width": 167.34,
+        "height": 83.574
       }
     ],
     "correctIndex": 1,
@@ -90,17 +102,23 @@
       {
         "image": "/q3_option_1.png",
         "text": "Using a measuring tape.",
-        "explanation": "A measuring tape cannot measure sea-ice age across the whole Arctic Ocean."
+        "explanation": "A measuring tape cannot measure sea-ice age across the whole Arctic Ocean.",
+        "width": 124,
+        "height": 101.961
       },
       {
         "image": "/q3_option_2.png",
         "text": "From satellites looking at the ocean.",
-        "explanation": "Satellites observe sea ice from space, helping scientists map and track changes across the Arctic Ocean."
+        "explanation": "Satellites observe sea ice from space, helping scientists map and track changes across the Arctic Ocean.",
+        "width": 124,
+        "height": 123.987
       },
       {
         "image": "/q3_option_3.png",
         "text": "In a laboratory.",
-        "explanation": "Laboratory work can help study samples! Large-scale sea-ice age data has to be collected using technology."
+        "explanation": "Laboratory work can help study samples! Large-scale sea-ice age data has to be collected using technology.",
+        "width": 124.107,
+        "height": 127.284
       }
     ],
     "correctIndex": 1,
@@ -131,17 +149,23 @@
       {
         "image": "/q4_option_1.png",
         "text": "March",
-        "explanation": "Arctic sea ice usually reaches its yearly maximum around March, after the winter freezing season."
+        "explanation": "Arctic sea ice usually reaches its yearly maximum around March, after the winter freezing season.",
+        "width": 124,
+        "height": 128
       },
       {
         "image": "/q4_option_2.png",
         "text": "June",
-        "explanation": "By June, the Arctic has entered the melt season, so sea ice is usually decreasing."
+        "explanation": "By June, the Arctic has entered the melt season, so sea ice is usually decreasing.",
+        "width": 124,
+        "height": 128
       },
       {
         "image": "/q4_option_3.png",
         "text": "October",
-        "explanation": "October is after the summer low, when sea ice starts growing again. But it is not usually the maximum month."
+        "explanation": "October is after the summer low, when sea ice starts growing again. But it is not usually the maximum month.",
+        "width": 124,
+        "height": 128
       }
     ],
     "correctIndex": 0,
@@ -172,17 +196,23 @@
       {
         "image": "/q5_option_1.png",
         "text": "The dark water reflects more sunlight, cooling the planet.",
-        "explanation": "It's actually the reverse. Think about dark clothes in warm weather - they attract more heat."
+        "explanation": "It's actually the reverse. Think about dark clothes in warm weather - they attract more heat.",
+        "width": 124,
+        "height": 107.817
       },
       {
         "image": "/q5_option_2.png",
         "text": "The dark water absorbs more sunlight, warming the planet faster.",
-        "explanation": "That's right! Water absorbs more sunlight because it's so dark. Ice is very bright - and so it reflects more light than dark water."
+        "explanation": "That's right! Water absorbs more sunlight because it's so dark. Ice is very bright - and so it reflects more light than dark water.",
+        "width": 138.727,
+        "height": 107.817
       },
       {
         "image": "/q5_option_3.png",
         "text": "It has no effect because the sun's strength stays the same.",
-        "explanation": "That's incorrect as this ignores the Albedo Effect (how shiny or dark a surface is and how much light it reflects back)."
+        "explanation": "That's incorrect as this ignores the Albedo Effect (how shiny or dark a surface is and how much light it reflects back).",
+        "width": 113.95,
+        "height": 107.817
       }
     ],
     "correctIndex": 1,
