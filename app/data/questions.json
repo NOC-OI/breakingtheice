@@ -36,14 +36,14 @@
         "position": "top",
         "transform": "0deg",
         "width": 70,
-        "height": 95
+        "height": 90
       },
       {
         "image": "/q1_media_2.jpg",
         "position": "bottom",
         "transform": "8.55deg",
-        "width": "95",
-        "height": "80"
+        "width": 75,
+        "height": 80
       }
     ]
   },
@@ -83,15 +83,15 @@
         "image": "/q2_media_1.jpg",
         "position": "bottom",
         "transform": "0deg",
-        "width": "96",
-        "height": "96"
+        "width": 85,
+        "height": 85
       },
       {
         "image": "/q2_media_2.jpg",
         "position": "top",
         "transform": "8.55deg",
-        "width": "95",
-        "height": "85"
+        "width": 75,
+        "height": 75
       }
     ]
   },
@@ -131,15 +131,15 @@
         "image": "/q3_media_1.jpg",
         "position": "top",
         "transform": "351.45deg",
-        "width": "90",
-        "height": "90"
+        "width": 85,
+        "height": 85
       },
       {
         "image": "/q3_media_2.jpg",
         "position": "bottom",
         "transform": "0deg",
-        "width": "90",
-        "height": "100"
+        "width": 110,
+        "height": 85
       }
     ]
   },
@@ -179,15 +179,15 @@
         "image": "/q4_media_1.jpg",
         "position": "top",
         "transform": "351.45deg",
-        "width": "95",
-        "height": "95"
+        "width": 85,
+        "height": 85
       },
       {
         "image": "/q4_media_2.jpg",
         "position": "bottom",
         "transform": "0deg",
-        "width": "70",
-        "height": "90"
+        "width": 70,
+        "height": 90
       }
     ]
   },
@@ -227,15 +227,15 @@
         "image": "/q5_media_1.jpg",
         "position": "top",
         "transform": "0deg",
-        "width": "70",
-        "height": "90"
+        "width": 70,
+        "height": 90
       },
       {
         "image": "/q5_media_2.jpg",
         "position": "bottom",
         "transform": "8.55deg",
-        "width": "90",
-        "height": "90"
+        "width": 78,
+        "height": 78
       }
     ]
   }
