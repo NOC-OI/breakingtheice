@@ -22,11 +22,33 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
             <p className="mb-3 text-xl font-bold leading-[1.3] sm:text-[22px] font-test-sohne">
               Some things you can do to help:
             </p>
-            <p className="text-[20px] font-bold">• Eat more vegetables.<span className="text-[20px] font-light"> Food like fruit & veg, whole grains, legumes, nuts and seeds lower your environmental impact. Meat and dairy use a lot of energy!</span></p>
-            <p className="text-[20px] font-bold">• Think about how you live and your relationship to waste. <span className="text-[20px] font-light"> Do you litter, or do you clean up after yourself? Do you recycle?</span></p>
+            <p className="text-[20px] font-bold">
+              • Eat more vegetables.
+              <span className="text-[20px] font-light">
+                {' '}
+                Food like fruit & veg, whole grains, legumes, nuts and seeds lower your
+                environmental impact. Meat and dairy use a lot of energy!
+              </span>
+            </p>
+            <p className="text-[20px] font-bold">
+              • Think about how you live and your relationship to waste.{' '}
+              <span className="text-[20px] font-light">
+                {' '}
+                Do you litter, or do you clean up after yourself? Do you recycle?
+              </span>
+            </p>
             <p className="text-[20px] font-bold">• Learn about renewable energy.</p>
-            <p className="text-[20px] font-bold">• Participate in climate-focused projects in your schools or college!</p>
-            <p className="text-[20px] font-bold">• Reduce your energy consumption. When traveling: cycle instead of taking the bus or driving a car. <span className="text-[20px] font-light">Flying by airplane burns large amounts of fossil fuels. At home: switch off lights when you leave the room, don't leave the tap running when you brush your teeth.</span></p>
+            <p className="text-[20px] font-bold">
+              • Participate in climate-focused projects in your schools or college!
+            </p>
+            <p className="text-[20px] font-bold">
+              • Reduce your energy consumption. When traveling: cycle instead of taking the bus or
+              driving a car.{' '}
+              <span className="text-[20px] font-light">
+                Flying by airplane burns large amounts of fossil fuels. At home: switch off lights
+                when you leave the room, don&apos;t leave the tap running when you brush your teeth.
+              </span>
+            </p>
           </div>
           <div>
             <Image
@@ -36,7 +58,7 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
               height={360}
               className="mx-auto w-full max-w-130 object-contain"
             />
-            <div className='grid grid-cols-1'>
+            <div className="grid grid-cols-1">
               <button
                 type="button"
                 onClick={onBack}
@@ -52,7 +74,6 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
                 <FiArrowRight aria-hidden className="h-5 w-5 ml-5" />
               </button>
             </div>
-
           </div>
           <div className="flex flex-row justify-start">
             <p className="text-[12px] leading-[1.3] text-[#00B5FF]/70 sm:left-8 lg:left-18 font-test-sohne">
@@ -60,8 +81,6 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
             </p>
           </div>
         </div>
-
-
       </div>
     </section>
   );

@@ -6,8 +6,8 @@ export type Question = {
   scenario: string;
   question: string;
   imageSource: string;
-  options: { image?: string; text: string; explanation: string, width: number, height: number }[];
+  options: { image?: string; text: string; explanation: string; width: number; height: number }[];
   correctIndex: number;
   bg: string;
-  media?: { image: string; position: string; transform: string, width?: string, height?: string }[];
+  media?: { image: string; position: string; transform: string; width?: string; height?: string }[];
 };

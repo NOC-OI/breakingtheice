@@ -19,7 +19,6 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export function QuestionsStage({
   question,
-  questionIndex,
   selectedOption,
   isCorrect,
   onSelectOption,
@@ -29,14 +28,13 @@ export function QuestionsStage({
 }: QuestionsStageProps) {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
-  const mediaSources = (question.media ?? []).map(src =>
-    ({ ...src, image: src.image && src.image.startsWith('/') ? `${basePath}${src.image}` : src.image })
-  );
+  const mediaSources = (question.media ?? []).map(src => ({
+    ...src,
+    image: src.image && src.image.startsWith('/') ? `${basePath}${src.image}` : src.image
+  }));
 
   const firstMedia = mediaSources[0];
   const secondMedia = mediaSources[1];
-
-  const isEvenQuestion = (questionIndex + 1) % 2 === 0;
 
   return (
     <section
@@ -68,12 +66,13 @@ export function QuestionsStage({
                   key={option.text}
                   type="button"
                   onClick={() => onSelectOption(index)}
-                  className={`w-full cursor-pointer relative flex h-55 flex-col overflow-hidden rounded-lg border-solid text-center text-[24px] font-bold text-[#efefef] transition sm:h-75 sm:text-[18px] bg-[#0d3352] ${revealCorrect
-                    ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
-                    : isWrongSelected
-                      ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
-                      : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5'
-                    }`}
+                  className={`w-full cursor-pointer relative flex h-55 flex-col overflow-hidden rounded-lg border-solid text-center text-[24px] font-bold text-[#efefef] transition sm:h-75 sm:text-[18px] bg-[#0d3352] ${
+                    revealCorrect
+                      ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
+                      : isWrongSelected
+                        ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
+                        : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5'
+                  }`}
                 >
                   {option.image ? (
                     <div className="relative h-[55%] flex items-center justify-center w-full mt-5">
@@ -82,8 +81,9 @@ export function QuestionsStage({
                         alt={option.text}
                         width={option.width}
                         height={option.height}
-                        className={`object-contain transition ${isWrongSelected ? 'grayscale opacity-60' : ''
-                          }`}
+                        className={`object-contain transition ${
+                          isWrongSelected ? 'grayscale opacity-60' : ''
+                        }`}
                       />
                     </div>
                   ) : null}
@@ -133,8 +133,9 @@ export function QuestionsStage({
         </div>
 
         <div
-          className={`pointer-events-none mt-8 hidden h-125 w-95 md:absolute md:mt-0 md:block ${true ? 'left-[68.5%] top-30.5' : 'right-[2.5%] top-19.5'
-            }`}
+          className={`pointer-events-none mt-8 hidden h-125 w-95 md:absolute md:mt-0 md:block ${
+            true ? 'left-[68.5%] top-30.5' : 'right-[2.5%] top-19.5'
+          }`}
           aria-hidden
         >
           <div
