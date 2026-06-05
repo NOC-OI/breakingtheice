@@ -67,7 +67,7 @@ export function Stages({
         />
       )}
 
-      {stage === 'finish' && <FinishStage onFinish={onFinish} />}
+      {stage === 'finish' && <FinishStage onFinish={onFinish} onBack={onBack} />}
     </section>
   );
 }

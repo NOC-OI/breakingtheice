@@ -105,6 +105,15 @@ export default function Home() {
   }
 
   function onBack() {
+    if (stage === 'finish') {
+      const lastIndex = QUESTIONS.length - 1;
+      setQuestionIndex(lastIndex);
+      setSelectedOption(QUESTIONS[lastIndex].correctIndex);
+      setResumeStage('questions');
+      setStage('questions');
+      return;
+    }
+
     if (questionIndex > 0) {
       const prevIndex = questionIndex - 1;
       setQuestionIndex(prevIndex);
