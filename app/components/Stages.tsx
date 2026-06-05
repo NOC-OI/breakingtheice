@@ -12,6 +12,7 @@ type StagesProps = {
   isCorrect: boolean;
   onAnswer: (optionIndex: number) => void;
   onNextQuestion: () => void;
+  onBack: () => void;
   warningProgress: number;
   showStartMission: boolean;
   onStartMission: () => void;
@@ -28,6 +29,7 @@ export function Stages({
   isCorrect,
   onAnswer,
   onNextQuestion,
+  onBack,
   warningProgress,
   showStartMission,
   onStartMission,
@@ -60,6 +62,7 @@ export function Stages({
           isCorrect={isCorrect}
           onSelectOption={onAnswer}
           onNext={onNextQuestion}
+          onBack={onBack}
           onMinimize={onMinimize}
         />
       )}

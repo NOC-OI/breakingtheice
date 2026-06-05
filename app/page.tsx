@@ -104,6 +104,19 @@ export default function Home() {
     setStage('finish');
   }
 
+  function onBack() {
+    if (questionIndex > 0) {
+      const prevIndex = questionIndex - 1;
+      setQuestionIndex(prevIndex);
+      setSelectedOption(QUESTIONS[prevIndex].correctIndex);
+    } else {
+      setShowStartMission(true);
+      setWarningProgress(0);
+      setResumeStage('intro');
+      setStage('intro');
+    }
+  }
+
   function onFinish() {
     setStage('map');
     setHasQuestStarted(false);
@@ -130,6 +143,7 @@ export default function Home() {
         isCorrect={isCorrect}
         onAnswer={onAnswer}
         onNextQuestion={onNextQuestion}
+        onBack={onBack}
         warningProgress={warningProgress}
         showStartMission={showStartMission}
         onStartMission={onStartMission}

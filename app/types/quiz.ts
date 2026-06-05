@@ -8,5 +8,5 @@ export type Question = {
   options: { image?: string; text: string; explanation: string }[];
   correctIndex: number;
   bg: string;
-  media?: string[];
+  media?: { image: string; position: string; transform: string, width?: string, height?: string }[];
 };
