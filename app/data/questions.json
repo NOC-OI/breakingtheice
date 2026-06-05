@@ -4,6 +4,7 @@
     "title": "Critical Data Question 1",
     "scenario": "The Arctic is one of Earth's polar regions. Orcas, Narwhals, Spotted Seals, Sea Otters and Polar bears all live here.",
     "question": "Where is the Arctic located?",
+    "imageSource": "Image source - NOC Arctic Cruise & Pexels",
     "options": [
       {
         "image": "/q1_option_1.png",
@@ -51,6 +52,7 @@
     "title": "Critical Data Question 2",
     "scenario": "The Arctic and Antarctic are both cold polar regions, but they are not the same kind of place.",
     "question": "What makes the the Arctic different?",
+    "imageSource": "Image source - Sergey Torbik & The Shuttervision (Pexels)",
     "options": [
       {
         "image": "/q2_option_1.png",
@@ -98,6 +100,7 @@
     "title": "Critical Data Question 3",
     "scenario": "Scientists can study Arctic sea ice over many years by observing it from above.",
     "question": "On our 3d Map Model, how did was the sea-ice age data collected? Hint: Click on the icon in the right corner of the screen to go back to the map and have a look to see if you can find the answer!",
+    "imageSource": "Image source - Igor Mashkov & Zelch Csaba (Pexels)",
     "options": [
       {
         "image": "/q3_option_1.png",
@@ -145,6 +148,7 @@
     "title": "Critical Data Question 4",
     "scenario": "Arctic sea ice grows during the cold dark winter and melts during the warmer summer. ",
     "question": "Which month has the most sea ice?",
+    "imageSource": "Image source -Tomas Malik & Кирилл Абрамов (Pexels)",
     "options": [
       {
         "image": "/q4_option_1.png",
@@ -192,6 +196,7 @@
     "title": "Critical Data Question 5",
     "scenario": "As white Arctic ice melts, it reveals dark ocean water underneath.  ",
     "question": "How does this change affect the amount of sunlight the Earth absorbs?",
+    "imageSource": "Image source - Star Zhang & Sergey Guk (Pexels)",
     "options": [
       {
         "image": "/q5_option_1.png",

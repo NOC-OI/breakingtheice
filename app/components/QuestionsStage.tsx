@@ -179,6 +179,10 @@ export function QuestionsStage({
             )}
           </div>
         </div>
+
+        <p className="absolute bottom-6 left-4 text-[12px] leading-[1.3] text-[#0d3352]/70 sm:left-8 lg:left-18 font-test-sohne">
+          {question.imageSource}
+        </p>
       </div>
 
       <QuestVisibilityControl onClick={onMinimize} />
