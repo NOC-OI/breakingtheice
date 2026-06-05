@@ -31,14 +31,14 @@
     "bg": "#ffd703",
     "media": [
       {
-        "image": "/q1_media_1.png",
+        "image": "/q1_media_1.jpg",
         "position": "top",
         "transform": "0deg",
         "width": 70,
         "height": 95
       },
       {
-        "image": "/q1_media_2.png",
+        "image": "/q1_media_2.jpg",
         "position": "bottom",
         "transform": "8.55deg",
         "width": "95",
@@ -78,14 +78,14 @@
     "bg": "#00b5ff",
     "media": [
       {
-        "image": "/q2_media_1.png",
+        "image": "/q2_media_1.jpg",
         "position": "bottom",
         "transform": "0deg",
         "width": "96",
         "height": "96"
       },
       {
-        "image": "/q2_media_2.png",
+        "image": "/q2_media_2.jpg",
         "position": "top",
         "transform": "8.55deg",
         "width": "95",
@@ -125,14 +125,14 @@
     "bg": "#ff77a8",
     "media": [
       {
-        "image": "/q3_media_1.png",
+        "image": "/q3_media_1.jpg",
         "position": "top",
         "transform": "351.45deg",
         "width": "90",
         "height": "90"
       },
       {
-        "image": "/q3_media_2.png",
+        "image": "/q3_media_2.jpg",
         "position": "bottom",
         "transform": "0deg",
         "width": "90",
@@ -172,14 +172,14 @@
     "bg": "#ff692f",
     "media": [
       {
-        "image": "/q4_media_1.png",
+        "image": "/q4_media_1.jpg",
         "position": "top",
         "transform": "351.45deg",
         "width": "95",
         "height": "95"
       },
       {
-        "image": "/q4_media_2.png",
+        "image": "/q4_media_2.jpg",
         "position": "bottom",
         "transform": "0deg",
         "width": "70",
@@ -219,14 +219,14 @@
     "bg": "#ffd703",
     "media": [
       {
-        "image": "/q5_media_1.png",
+        "image": "/q5_media_1.jpg",
         "position": "bottom",
         "transform": "0deg",
         "width": "70",
         "height": "90"
       },
       {
-        "image": "/q5_media_2.png",
+        "image": "/q5_media_2.jpg",
         "position": "top",
         "transform": "8.55deg",
         "width": "90",
