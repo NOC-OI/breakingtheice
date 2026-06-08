@@ -17,7 +17,7 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
           But we can all do more!
         </h2>
 
-        <div className="mt-8 grid gap-8 sm:grid-cols-[1.3fr_1fr] sm:items-center">
+        <div className="mt-8 grid gap-18 grid-cols-[1.3fr_1fr] items-center">
           <div className="text-lg font-medium leading-[1.3] text-[#f2f6fb] sm:text-[20px]">
             <p className="mb-3 text-xl font-bold leading-[1.3] sm:text-[22px] font-test-sohne">
               Some things you can do to help:
@@ -62,21 +62,23 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
               <button
                 type="button"
                 onClick={onBack}
-                className="border border-[#ffffff] bg-transparent cursor-pointer mt-10 rounded-md bg-[#00B5FF] w-[68px] px-6 py-3 text-xl font-extrabold text-white shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:bg-[#0d3352]/5"
+                className="inline-flex w-[130px] h-11 items-center justify-center gap-1 border border-[#00B5FF] bg-transparent cursor-pointer mt-10 rounded-md bg-[#00B5FF] px-6 py-3 text-white shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:bg-[#0d3352]/5"
               >
                 <FiArrowLeft aria-hidden className="h-5 w-5" />
+                <span className="text-[1rem] font-semibold">Back</span>
               </button>
               <button
                 type="button"
                 onClick={onFinish}
-                className="cursor-pointer rounded-md bg-[#00B5FF] w-[123px] px-8 py-3 text-xl font-extrabold text-white shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:brightness-110"
+                className="inline-flex w-[130px] h-11 items-center justify-center gap-1 cursor-pointer rounded-md bg-[#00B5FF] px-8 py-3 text-black shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:brightness-110"
               >
-                <FiArrowRight aria-hidden className="h-5 w-5 ml-5" />
+                <span className="text-[1rem] font-semibold">Finish</span>
+                <FiArrowRight aria-hidden className="h-5 w-5" />
               </button>
             </div>
           </div>
           <div className="flex flex-row justify-start">
-            <p className="text-[12px] pt-20 xl:pt-55 leading-[1.3] text-[#00B5FF]/70 lg:left-18 font-test-sohne">
+            <p className="text-[12px] pt-13 xl:pt-20 leading-[1.3] text-[#00B5FF]/70 lg:left-18 font-test-sohne">
               Illustration by John Stocker (Iconscout Free to Use License)
             </p>
           </div>
