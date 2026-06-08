@@ -93,22 +93,6 @@ export function IntroStage({
 
       <div className="absolute right-[5.5vw] top-[14vh] z-10 h-120 w-84 rotate-[9.45deg] drop-shadow-[0_18px_24px_rgba(0,0,0,0.35)] animate-[fadeIn_.45s_ease-out]">
         <Image src={ASSETS.agentCard} alt="" fill className="object-contain" priority />
-        <div className="absolute left-7.75 top-39 h-71.5 w-68.5 overflow-hidden rounded-[20px] bg-white">
-          <div className="absolute inset-x-0 bottom-0 h-[56%] bg-[#1eaee8]" />
-          <div className="absolute left-1/2 top-[12%] h-30.5 w-30.5 -translate-x-1/2 overflow-hidden rounded-full border-[3px] border-black bg-white">
-            <Image src={ASSETS.bearZoom} alt="Agent Blue" fill className="object-cover" />
-          </div>
-          <div className="absolute inset-x-0 bottom-[18%] text-center">
-            <p className="text-[42px] leading-none font-black italic text-black transform-[skewX(-12deg)]">
-              AGENT BLUE
-            </p>
-            <p className="mt-3 text-[32px] leading-[1.08] font-black text-[#0d3352]">
-              Arctic Ice
-              <br />
-              Investigator
-            </p>
-          </div>
-        </div>
       </div>
 
       {showStartMission && (
