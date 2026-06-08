@@ -19,6 +19,7 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export function QuestionsStage({
   question,
+  questionIndex,
   selectedOption,
   isCorrect,
   onSelectOption,
@@ -27,7 +28,6 @@ export function QuestionsStage({
   onMinimize
 }: QuestionsStageProps) {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-
   const mediaSources = (question.media ?? []).map(src => ({
     ...src,
     image: src.image && src.image.startsWith('/') ? `${basePath}${src.image}` : src.image
@@ -41,20 +41,20 @@ export function QuestionsStage({
       className="relative z-20 h-screen w-full overflow-hidden"
       style={{ backgroundColor: question.bg }}
     >
-      <div className="relative mx-1 h-full w-[76vw] px-4 pb-8 pt-19 xl:pt-45 xl:mx-auto xl:w-[min(1440px,96vw)] sm:px-8 lg:px-18">
+      <div className="relative mx-1 h-full w-[76vw] px-4 pb-8 pt-19 xl:pt-35 xl:mx-auto xl:w-[min(1440px,96vw)] sm:px-8 lg:px-18">
         <div className="max-w-197.5 text-[#0d3352]">
           <h2 className="font-rl-aqva-black text-[clamp(2.1rem,4vw,4rem)] font-extrabold leading-[1.05]">
             {question.title}
           </h2>
 
-          <div className="mt-4 font-test-sohne font-medium text-[clamp(1.05rem,1.75vw,1.85rem)] w-[80%] xl:w-full leading-[1.3]">
+          <div className="mt-4 font-test-sohne text-[1.375rem] font-medium text-[clamp(1.05rem,1.75vw,1.85rem)] w-[80%] xl:w-full leading-[1.3]">
             <p>{question.scenario}</p>
-            <p className="mt-6 font-bold">{question.question}</p>
+            <p className="mt-7 font-bold">{question.question}</p>
           </div>
         </div>
 
-        <div className="flex flex-col gap-6 mt-15 w-full lg:flex-row lg:items-end lg:gap-8 ">
-          <div className="lg:mt-8 lg:grid lg:w-full lg:max-w-190 lg:gap-4 sm:grid-cols-3">
+        <div className="flex flex-col gap-6 mt-8 w-[85%] xl:w-full lg:flex-row lg:items-end lg:gap-8 ">
+          <div className="lg:grid lg:w-full lg:max-w-190 lg:gap-4 sm:grid-cols-3">
             {question.options.map((option, index) => {
               const isSelected = selectedOption === index;
               const isCorrectOption = question.correctIndex === index;
@@ -66,13 +66,12 @@ export function QuestionsStage({
                   key={option.text}
                   type="button"
                   onClick={() => onSelectOption(index)}
-                  className={`w-full cursor-pointer relative flex h-55 flex-col overflow-hidden rounded-lg border-solid text-center text-[24px] font-bold text-[#efefef] transition sm:h-80 sm:text-[18px] bg-[#0d3352] ${
-                    revealCorrect
-                      ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
-                      : isWrongSelected
-                        ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
-                        : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5'
-                  }`}
+                  className={`w-full cursor-pointer relative flex h-80 flex-col overflow-hidden rounded-lg border-solid text-center font-bold text-[#efefef] transition text-[18px] bg-[#0d3352] ${revealCorrect
+                    ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
+                    : isWrongSelected
+                      ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
+                      : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5'
+                    }`}
                 >
                   {option.image ? (
                     <div className="relative h-[55%] flex items-center justify-center w-full mt-5">
@@ -81,18 +80,17 @@ export function QuestionsStage({
                         alt={option.text}
                         width={option.width}
                         height={option.height}
-                        className={`object-contain transition ${
-                          isWrongSelected ? 'grayscale opacity-60' : ''
-                        }`}
+                        className={`object-contain transition ${isWrongSelected ? 'grayscale opacity-60' : ''
+                          }`}
                       />
                     </div>
                   ) : null}
 
                   <div className="flex flex-1 items-center justify-center px-3 py-4">
                     {isSelected ? (
-                      <p className="line-clamp-6 leading-[1.2]">{option.explanation}</p>
+                      <p className="line-clamp-7 leading-[1.2] text-[16px]">{option.explanation}</p>
                     ) : (
-                      <p className="line-clamp-4 leading-[1.2]">{option.text}</p>
+                      <p className="line-clamp-4 leading-[1.2] text-[18px]">{option.text}</p>
                     )}
                   </div>
 
@@ -111,33 +109,35 @@ export function QuestionsStage({
               );
             })}
           </div>
-          <div className="mt-6 flex flex-row gap-3 w-full md:flex-col md:w-40 md:mt-8 md:gap-3">
+        </div>
+        <div className={`mt-6 flex flex-row gap-104 ${questionIndex === 0 && 'ml-120'} w-full xl:flex-col xl:gap-3 xl:ml-150 md:w-40 md:mt-8`}>
+          {questionIndex > 0 &&
             <button
               type="button"
               onClick={onBack}
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-[4px] border border-[#0d3352] bg-transparent px-6 text-[16px] font-semibold text-[#0d3352] transition hover:bg-[#0d3352]/5 w-full"
+              className="inline-flex w-[117px] h-11 items-center justify-center gap-2 rounded-[4px] border border-[#0d3352] bg-transparent px-6 text-[16px] font-semibold text-[#0d3352] transition hover:bg-[#0d3352]/5 w-full"
             >
               <FiArrowLeft aria-hidden className="h-5 w-5" />
               <span>Back</span>
             </button>
-            <button
-              type="button"
-              onClick={onNext}
-              disabled={!isCorrect}
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-[4px] bg-[#0d3352] px-6 text-[16px] font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-            >
-              <span>Next</span>
-              <FiArrowRight aria-hidden className="h-5 w-5" />
-            </button>
-          </div>
+          }
+          <button
+            type="button"
+            onClick={onNext}
+            disabled={!isCorrect}
+            className="inline-flex w-[117px] h-11 items-center justify-center gap-2 rounded-[4px] bg-[#0d3352] px-6 text-[16px] font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+          >
+            <span>Next</span>
+            <FiArrowRight aria-hidden className="h-5 w-5" />
+          </button>
         </div>
 
         <div
-          className={`pointer-events-none mt-8 hidden h-125 w-95 top-30.5 left-[80%] md:absolute md:mt-0 md:block xl:left-[68.5%]`}
+          className={`pointer-events-none mt-8 hidden h-125 w-95 top-20 xl:top-35 left-[80%] md:absolute md:mt-0 md:block xl:left-[68.5%]`}
           aria-hidden
         >
           <div
-            className={`absolute ${firstMedia?.position === 'top' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] right-15 top-0`}
+            className={`absolute ${firstMedia?.position === 'top' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] right-5 xl:right-15 top-0`}
             style={{
               width: firstMedia?.width ? `${firstMedia.width * 4}px` : '280px',
               height: firstMedia?.height ? `${firstMedia.height * 4}px` : '360px',
