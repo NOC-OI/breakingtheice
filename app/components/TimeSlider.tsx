@@ -171,11 +171,11 @@ export function TimeSlider({
   }
 
   return (
-    <div className="absolute bottom-8 left-1/2 z-20 h-52 w-[80vw] -translate-x-1/2">
+    <div className="absolute bottom-8 left-12 right-12 z-20 h-46 2xl:left-16 xl:right-16">
       <div
         className={`relative ml-auto flex text-white shadow-xl transition-[width,height,padding] duration-300 ease-out ${
           timelineVisible
-            ? 'h-full w-full rounded-2xl bg-[#0d3352f0] px-4 py-4 backdrop-blur-sm sm:px-6'
+            ? 'h-full w-full rounded-2xl bg-[#0d3352f0] px-2 py-3 backdrop-blur-sm sm:px-5'
             : 'h-16.25 w-17.5 rounded-[10px] bg-[#0d3352] p-3'
         }`}
       >
@@ -185,7 +185,7 @@ export function TimeSlider({
           className={`flex cursor-pointer items-center justify-center rounded-xs bg-[#faf7f5] hover:bg-[#e0e0e0] text-[#0d3352] transition-[filter,background-color] hover:brightness-95 ${
             timelineVisible
               ? 'absolute right-4 top-4 h-8 w-8'
-              : 'absolute bottom-5.5 right-5.75 h-5 w-6'
+              : 'absolute bottom-4 right-4.75 h-8 w-8'
           }`}
           aria-label={timelineVisible ? 'Hide timeline' : 'Show timeline'}
         >
@@ -207,11 +207,11 @@ export function TimeSlider({
 
         <div
           className={`min-w-0 overflow-hidden transition-[max-width,opacity] duration-300 ease-out ${
-            timelineVisible ? 'w-full pr-14 opacity-100' : 'max-w-0 opacity-0'
+            timelineVisible ? 'w-full pr-0 opacity-100' : 'max-w-0 opacity-0'
           }`}
         >
-          <div className="mb-6 flex items-center justify-between gap-4">
-            <p className="flex items-center gap-2 text-sm text-[#d8e6f5] sm:text-2xl">
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <p className="flex items-center gap-2 text-sm text-[#d8e6f5] sm:text-lg xl:text-2xl">
               Scroll across to see how ice cover changes over time
               {isZarrLoading ? (
                 <span
@@ -296,7 +296,7 @@ export function TimeSlider({
     "
             />
           </div>
-          <div className="flex justify-between pt-2 h-15 items-end">
+          <div className="flex justify-between pt-1 h-13 items-end">
             <TimelinePlayControls
               playbackMode={playbackMode}
               datasetMode={datasetMode}
@@ -307,7 +307,7 @@ export function TimeSlider({
               onNextMonth={handleNext}
               onNextYear={handleNextYear}
             />
-            <p className="text-xs text-[#d8e6f5]">
+            <p className="text-xs text-[#d8e6f5] text-[0.75rem]">
               Data used in model was collected by satellite - can be found at{' '}
               <a
                 className="text-[#d8e6f5] underline"

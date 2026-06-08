@@ -31,8 +31,8 @@ function PlaybackIcon({ playbackMode }: { playbackMode: PlaybackMode }) {
   if (playbackMode === 'evenfaster') {
     return (
       <span className="flex items-center gap-0.5" aria-hidden>
-        <FaForward className="h-[0.75rem] w-[0.75rem]" />
-        <FaForward className="h-[0.75rem] w-[0.75rem] ml-[-0.15rem]" />
+        <FaForward className="h-3 w-3" />
+        <FaForward className="h-3 w-3 ml-[-0.15rem]" />
       </span>
     );
   }
