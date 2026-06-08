@@ -10,7 +10,7 @@ type FinishStageProps = {
 export function FinishStage({ onFinish, onBack }: FinishStageProps) {
   return (
     <section className="relative z-20 h-full w-full overflow-auto bg-[#0D3352] text-white">
-      <div className="mx-auto flex min-h-full w-[min(1400px,96vw)] flex-col px-5 pb-10 pt-8 sm:px-8 sm:pt-14">
+      <div className="mx-auto flex min-h-full w-[min(1400px,96vw)] flex-col px-5 pb-10 xl:pt-45 sm:px-8 sm:pt-14">
         <h2 className="font-rl-aqva-black text-[45px] font-extrabold leading-tight sm:max-w-2xl sm:text-[45px]">
           Great work.
           <br />
@@ -58,7 +58,7 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
               height={360}
               className="mx-auto w-full max-w-130 object-contain"
             />
-            <div className="grid grid-cols-1">
+            <div className="mt-6 flex flex-row gap-3 w-full md:flex-col md:w-40 md:mt-8 md:gap-3">
               <button
                 type="button"
                 onClick={onBack}
@@ -69,14 +69,14 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
               <button
                 type="button"
                 onClick={onFinish}
-                className="cursor-pointer mt-10 rounded-md bg-[#00B5FF] w-[123px] px-8 py-3 text-xl font-extrabold text-white shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:brightness-110"
+                className="cursor-pointer rounded-md bg-[#00B5FF] w-[123px] px-8 py-3 text-xl font-extrabold text-white shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:brightness-110"
               >
                 <FiArrowRight aria-hidden className="h-5 w-5 ml-5" />
               </button>
             </div>
           </div>
           <div className="flex flex-row justify-start">
-            <p className="text-[12px] leading-[1.3] text-[#00B5FF]/70 sm:left-8 lg:left-18 font-test-sohne">
+            <p className="text-[12px] pt-20 xl:pt-55 leading-[1.3] text-[#00B5FF]/70 lg:left-18 font-test-sohne">
               Illustration by John Stocker (Iconscout Free to Use License)
             </p>
           </div>
