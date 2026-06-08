@@ -91,13 +91,13 @@ export function IntroStage({
         </div>
       </div>
 
-      <div className="absolute right-[5.5vw] top-[14vh] z-10 h-120 w-84 rotate-[9.45deg] drop-shadow-[0_18px_24px_rgba(0,0,0,0.35)] animate-[fadeIn_.45s_ease-out]">
+      <div className="absolute right-[5.5vw] z-10 top-0  h-140 w-84 xl:h-200 xl:w-130  drop-shadow-[0_18px_24px_rgba(0,0,0,0.35)] animate-[fadeIn_.45s_ease-out]">
         <Image src={ASSETS.agentCard} alt="" fill className="object-contain" priority />
       </div>
 
       {showStartMission && (
-        <div className="absolute left-[max(24px,7vw)] bottom-10 xl:bottom-[10vh] z-20 w-[55%] xl:w-[min(92vw,1100px)] text-black">
-          <div className="pt-15 xl:pb-15">
+        <div className="absolute left-[max(24px,7vw)] xl:bottom-[10vh] z-20 w-[55%] xl:w-[min(92vw,1100px)] text-black">
+          <div className="pt-50 pb-1 xl:pt-0 xl:pb-15">
             <h2 className="font-['Courier_New'] text-[24px] xl:text-[36px] leading-[1.2] font-bold">
               Greetings Agent
             </h2>
