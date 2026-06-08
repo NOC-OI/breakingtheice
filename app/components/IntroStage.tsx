@@ -61,12 +61,11 @@ export function IntroStage({
         <Image src={ASSETS.arcticOutline} alt="" fill className="object-cover" priority />
       </div>
 
-      <div className="absolute left-[max(24px,7vw)] top-[8%] xl:top-[max(28px,11vh)] border border-[#ffd21f]  z-10 w-[min(90vw,482px)] overflow-hidden rounded-lg bg-[#0d3352] pt-4 pb-0 text-white shadow-[0_22px_34px_rgba(0,0,0,0.14),0_8px_42px_rgba(0,0,0,0.12),0_11px_14px_rgba(0,0,0,0.2)]">
+      <div className="absolute left-[max(24px,7vw)] top-[6%] xl:top-[max(28px,11vh)] border border-[#ffd21f]  z-10 w-[min(90vw,482px)] overflow-hidden rounded-lg bg-[#0d3352] pt-4 pb-0 text-white shadow-[0_22px_34px_rgba(0,0,0,0.14),0_8px_42px_rgba(0,0,0,0.12),0_11px_14px_rgba(0,0,0,0.2)]">
         <div className="flex items-center gap-4 px-5">
           <div
-            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-2xl font-black transition-colors duration-50 ${
-              isAlertFlipped ? 'bg-[#ffd21f] text-[#303746]' : 'bg-[#303746] text-[#ffd21f]'
-            }`}
+            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-2xl font-black transition-colors duration-50 ${isAlertFlipped ? 'bg-[#ffd21f] text-[#303746]' : 'bg-[#303746] text-[#ffd21f]'
+              }`}
           >
             <span className="leading-none">!</span>
           </div>
@@ -109,22 +108,22 @@ export function IntroStage({
               Greetings Agent
             </h2>
 
-            <p className="mt-8 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
               Across the Arctic, rising temperatures are triggering a chain reaction. Ocean currents
               are changing, glaciers and arctic ice are melting, and habitats are disappearing.
             </p>
 
-            <p className="mt-8 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
               NOC have uncovered 5 critical data points.
             </p>
 
-            <p className="mt-8 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
               Your mission is to read each scenario and select the correct scientific outcome. One
               wrong calculation could accelerate the damage. We need to stabilise the climate
               models, to protect our polar regions.
             </p>
 
-            <p className="mt-8 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
               The fate of Planet Earth rests in your hands.
               <br />
               Are you ready to accept this mission?
@@ -136,13 +135,12 @@ export function IntroStage({
             onMouseEnter={() => setIsStartMissionHovered(true)}
             onMouseLeave={() => setIsStartMissionHovered(false)}
             style={{ transform: `translateY(${startMissionOffsetY}px)` }}
-            className={`cursor-pointer mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-sm bg-[#0d3352] px-8 py-6 text-[22px] font-semibold text-white transition-[transform,box-shadow,filter] duration-150 hover:brightness-110 active:brightness-100 ${
-              isStartMissionPressing
-                ? 'shadow-[0_0_0_rgba(0,0,0,0.22)]'
-                : isStartMissionHovered
-                  ? 'shadow-[0_4px_0_rgba(0,0,0,0.22)]'
-                  : 'shadow-[0_7px_0_rgba(0,0,0,0.22)]'
-            }`}
+            className={`cursor-pointer mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-sm bg-[#0d3352] px-8 py-6 text-[22px] font-semibold text-white transition-[transform,box-shadow,filter] duration-150 hover:brightness-110 active:brightness-100 ${isStartMissionPressing
+              ? 'shadow-[0_0_0_rgba(0,0,0,0.22)]'
+              : isStartMissionHovered
+                ? 'shadow-[0_4px_0_rgba(0,0,0,0.22)]'
+                : 'shadow-[0_7px_0_rgba(0,0,0,0.22)]'
+              }`}
           >
             <span>Start Mission</span>
             <FiArrowRight aria-hidden className="h-6 w-6" />

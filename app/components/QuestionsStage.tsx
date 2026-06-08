@@ -41,7 +41,7 @@ export function QuestionsStage({
       className="relative z-20 h-screen w-full overflow-hidden"
       style={{ backgroundColor: question.bg }}
     >
-      <div className="relative mx-1 h-full w-[76vw] px-4 pb-8 pt-19 xl:pt-35 xl:mx-auto xl:w-[min(1440px,96vw)] sm:px-8 lg:px-18">
+      <div className="relative mx-1 h-full w-[76vw] px-4 pb-8 pt-14 xl:pt-35 xl:mx-auto xl:w-[min(1440px,96vw)] sm:px-8 lg:px-18">
         <div className="max-w-197.5 text-[#0d3352]">
           <h2 className="font-rl-aqva-black text-[clamp(2.1rem,4vw,4rem)] font-extrabold leading-[1.05]">
             {question.title}
@@ -66,13 +66,12 @@ export function QuestionsStage({
                   key={option.text}
                   type="button"
                   onClick={() => onSelectOption(index)}
-                  className={`w-full cursor-pointer relative flex h-80 flex-col overflow-hidden rounded-lg border-solid text-center font-bold text-[#efefef] transition text-[18px] bg-[#0d3352] ${
-                    revealCorrect
-                      ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
-                      : isWrongSelected
-                        ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
-                        : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5'
-                  }`}
+                  className={`w-full cursor-pointer relative flex h-80 flex-col overflow-hidden rounded-lg border-solid text-center font-bold text-[#efefef] transition text-[18px] bg-[#0d3352] ${revealCorrect
+                    ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
+                    : isWrongSelected
+                      ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
+                      : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5'
+                    }`}
                 >
                   {option.image ? (
                     <div className="relative h-[55%] flex items-center justify-center w-full mt-5">
@@ -81,9 +80,8 @@ export function QuestionsStage({
                         alt={option.text}
                         width={option.width}
                         height={option.height}
-                        className={`object-contain transition ${
-                          isWrongSelected ? 'grayscale opacity-60' : ''
-                        }`}
+                        className={`object-contain transition ${isWrongSelected ? 'grayscale opacity-60' : ''
+                          }`}
                       />
                     </div>
                   ) : null}
