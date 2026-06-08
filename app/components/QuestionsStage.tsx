@@ -66,12 +66,13 @@ export function QuestionsStage({
                   key={option.text}
                   type="button"
                   onClick={() => onSelectOption(index)}
-                  className={`w-full cursor-pointer relative flex h-80 flex-col overflow-hidden rounded-lg border-solid text-center font-bold text-[#efefef] transition text-[18px] bg-[#0d3352] ${revealCorrect
-                    ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
-                    : isWrongSelected
-                      ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
-                      : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5'
-                    }`}
+                  className={`w-full cursor-pointer relative flex h-80 flex-col overflow-hidden rounded-lg border-solid text-center font-bold text-[#efefef] transition text-[18px] bg-[#0d3352] ${
+                    revealCorrect
+                      ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
+                      : isWrongSelected
+                        ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
+                        : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5'
+                  }`}
                 >
                   {option.image ? (
                     <div className="relative h-[55%] flex items-center justify-center w-full mt-5">
@@ -80,8 +81,9 @@ export function QuestionsStage({
                         alt={option.text}
                         width={option.width}
                         height={option.height}
-                        className={`object-contain transition ${isWrongSelected ? 'grayscale opacity-60' : ''
-                          }`}
+                        className={`object-contain transition ${
+                          isWrongSelected ? 'grayscale opacity-60' : ''
+                        }`}
                       />
                     </div>
                   ) : null}
@@ -111,7 +113,7 @@ export function QuestionsStage({
           </div>
         </div>
         <div
-          className={`mt-6 flex flex-row gap-104 ${questionIndex === 0 && 'ml-120'} w-full xl:flex-col xl:gap-3 xl:ml-150 md:w-40 md:mt-8`}
+          className={`mt-5 flex flex-row gap-104 ${questionIndex === 0 && 'ml-120'} w-full md:w-40 xl:flex-col xl:gap-3 xl:ml-150 xl:mt-8`}
         >
           {questionIndex > 0 && (
             <button
