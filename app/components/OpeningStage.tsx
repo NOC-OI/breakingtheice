@@ -37,11 +37,12 @@ export function OpeningStage({ onPlay, onMinimize }: OpeningStageProps) {
 
   return (
     <section className="relative z-20 h-full w-full overflow-hidden bg-[#0d3352]">
-      <div className="absolute inset-[-133.58%_-48.43%_-139.5%_-40.02%] opacity-70">
-        <Image src={ASSETS.openingVectorPrimary} alt="" fill className="object-fill" />
+      <div className="absolute left-1/2 top-1/2 h-[min(380vh,380vw)] aspect-square -translate-x-1/2 -translate-y-1/2 opacity-70">
+        <Image src={ASSETS.openingVectorPrimary} alt="" fill priority className="object-cover" />
       </div>
-      <div className="absolute inset-[-138.27%_-55.25%_-144.18%_-46.84%] opacity-70">
-        <Image src={ASSETS.openingVectorSecondary} alt="" fill className="object-fill" />
+
+      <div className="absolute left-1/2 top-1/2 h-[min(390vh,390vw)] aspect-square -translate-x-1/2 -translate-y-1/2 opacity-70">
+        <Image src={ASSETS.openingVectorSecondary} alt="" fill priority className="object-cover" />
       </div>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center">
