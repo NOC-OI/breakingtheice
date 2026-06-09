@@ -442,7 +442,7 @@ export function MapPage({
   }
 
   return (
-    <section className="font-test-sohne relative z-10 h-full w-full">
+    <section className="font-test-sohne relative z-10 h-dvh w-dvw">
       <div className="absolute inset-0">
         <div ref={mapContainerRef} className="h-full w-full" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.1),rgba(0,0,0,0.55)_75%)]" />

@@ -171,12 +171,12 @@ export function TimeSlider({
   }
 
   return (
-    <div className="absolute bottom-8 left-12 right-12 z-20 h-46 2xl:left-16 xl:right-16">
+    <div className="absolute bottom-8 left-8 right-8 lg:left-12 lg:right-12 z-20 h-46 2xl:left-16 xl:right-16">
       <div
         className={`relative ml-auto flex text-white shadow-xl transition-[width,height,padding] duration-300 ease-out ${
           timelineVisible
             ? 'h-full w-full rounded-2xl bg-[#0d3352f0] px-2 py-3 backdrop-blur-sm sm:px-5'
-            : 'h-16.25 w-17.5 rounded-[10px] bg-[#0d3352] p-3'
+            : 'sm:h-16.25 sm:w-17.5 h-13 w-13 rounded-[10px] bg-[#0d3352] p-3'
         }`}
       >
         <button
@@ -184,8 +184,8 @@ export function TimeSlider({
           onClick={onToggleTimeline}
           className={`flex cursor-pointer items-center justify-center rounded-xs bg-[#faf7f5] hover:bg-[#e0e0e0] text-[#0d3352] transition-[filter,background-color] hover:brightness-95 ${
             timelineVisible
-              ? 'absolute right-4 top-4 h-8 w-8'
-              : 'absolute bottom-4 right-4.75 h-8 w-8'
+              ? 'absolute sm:right-4 sm:top-3 right-3.25 top-3 sm:h-8 sm:w-8 h-6 w-6'
+              : 'absolute sm:bottom-4 sm:right-4.75 right-3.25 sm:h-8 sm:w-8 h-6 w-6'
           }`}
           aria-label={timelineVisible ? 'Hide timeline' : 'Show timeline'}
         >
@@ -210,7 +210,7 @@ export function TimeSlider({
             timelineVisible ? 'w-full pr-0 opacity-100' : 'max-w-0 opacity-0'
           }`}
         >
-          <div className="mb-4 flex items-center justify-between gap-4">
+          <div className="mb-4 sm:flex hidden items-center justify-between gap-4">
             <p className="flex items-center gap-2 text-sm text-[#d8e6f5] sm:text-lg xl:text-2xl">
               Scroll across to see how ice cover changes over time
               {isZarrLoading ? (
@@ -221,6 +221,18 @@ export function TimeSlider({
               ) : null}
             </p>
           </div>
+          <div className="mb-4 sm:hidden flex items-center justify-between gap-4">
+            <p className="flex items-center gap-2 text-xs text-[#d8e6f5] sm:text-lg xl:text-2xl">
+              See how ice cover changes over time
+              {isZarrLoading ? (
+                <span
+                  className="ml-1 inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-[#d8e6f5]/40 border-t-[#d8e6f5] align-middle sm:h-4 sm:w-4"
+                  aria-label="Loading sea ice layer"
+                />
+              ) : null}
+            </p>
+          </div>
+
           <div className="mb-0 hidden h-4.5 text-[10px] font-bold sm:block -mr-2">
             <div className="relative h-full w-full">
               {labelTickMarks.map((mark, index) => (
@@ -255,6 +267,41 @@ export function TimeSlider({
               ))}
             </div>
           </div>
+          <div className="mb-0 sm:hidden h-4.5 text-[10px] font-bold block -mr-2">
+            <div className="relative h-full w-full">
+              {labelTickMarks.map((mark, index) => (
+                <span
+                  key={mark.label}
+                  style={{ left: mark.left }}
+                  className={`absolute top-0 ${
+                    index === 0
+                      ? 'translate-x-0'
+                      : index === labelTickMarks.length - 1
+                        ? '-translate-x-full'
+                        : '-translate-x-1/2'
+                  }`}
+                >
+                  {[1984, 1994, 2004, 2014, 2024].includes(Number(mark.label)) ? mark.label : ''}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-0 sm:hidden h-2 block">
+            <div className="relative h-full w-full">
+              {yearTickMarks.map((mark, index) => (
+                <span
+                  key={`tick-${mark.value}`}
+                  style={{ left: mark.left }}
+                  className={`absolute top-0 h-2 w-px ${
+                    mark.isMajor ? 'bg-white/90' : 'bg-white/50'
+                  } ${index === 0 ? 'translate-x-0' : '-translate-x-1/2'}`}
+                  aria-hidden
+                />
+              ))}
+            </div>
+          </div>
+
           <div className="relative h-8 w-full">
             <div className="pointer-events-none absolute left-0 top-1/2 h-6 w-full -translate-y-1/2 overflow-hidden rounded-full bg-gray-300">
               <div className="h-full bg-black" style={{ width: progressWidth }} />
@@ -296,29 +343,35 @@ export function TimeSlider({
     "
             />
           </div>
-          <div className="flex justify-between pt-1 h-13 items-end">
-            <TimelinePlayControls
-              playbackMode={playbackMode}
-              datasetMode={datasetMode}
-              onCyclePlayback={handlePlaybackCycle}
-              onPause={() => setPlaybackMode('paused')}
-              onPreviousMonth={handleBefore}
-              onPreviousYear={handleLastYear}
-              onNextMonth={handleNext}
-              onNextYear={handleNextYear}
-            />
-            <p className="text-xs text-[#d8e6f5] text-[0.75rem]">
-              Data used in model was collected by satellite - can be found at{' '}
-              <a
-                className="text-[#d8e6f5] underline"
-                href="https://nsidc.org/data/nsidc-0611/versions/4"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                nsidc.org
-              </a>
-            </p>
-            <DatasetModeControl mode={datasetMode} onChangeMode={handleDatasetModeChange} />
+          <div className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-4 mt-1 sm:mt-2 lg:mt-0 pt-1 h-13 sm:items-end items-center min-w-0">
+            <div className="flex items-center gap-4 min-w-0">
+              <TimelinePlayControls
+                playbackMode={playbackMode}
+                datasetMode={datasetMode}
+                onCyclePlayback={handlePlaybackCycle}
+                onPause={() => setPlaybackMode('paused')}
+                onPreviousMonth={handleBefore}
+                onPreviousYear={handleLastYear}
+                onNextMonth={handleNext}
+                onNextYear={handleNextYear}
+              />
+
+              <p className="min-w-0 whitespace-normal wrap-break-word text-[#d8e6f5] lg:text-[0.75rem] md:text-[0.75rem] text-[0.5rem] sm:text-left text-center">
+                Data used in model was collected by satellite - can be found at{' '}
+                <a
+                  className="text-[#d8e6f5] underline whitespace-nowrap"
+                  href="https://nsidc.org/data/nsidc-0611/versions/4"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  nsidc.org
+                </a>
+              </p>
+            </div>
+
+            <div className="shrink-0 sm:self-start">
+              <DatasetModeControl mode={datasetMode} onChangeMode={handleDatasetModeChange} />
+            </div>
           </div>
         </div>
       </div>

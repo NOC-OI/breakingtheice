@@ -65,7 +65,7 @@ export function TimelinePlayControls({
       <button
         type="button"
         onClick={onPreviousMonth}
-        className="flex h-9 w-9 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
+        className="flex sm:h-9 sm:w-9 h-7 w-7 items-center justify-center rounded-md bg-white/10 px-2 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
         aria-label="Previous month"
         title="Previous month"
       >
@@ -75,7 +75,7 @@ export function TimelinePlayControls({
       <button
         type="button"
         onClick={onCyclePlayback}
-        className={`flex h-9 w-9 items-center justify-center rounded-md bg-white/10 ${playbackMode === 'fast' ? 'px-2.5' : 'px-3'} text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer ${playbackMode !== 'paused' ? 'bg-white/25' : ''}`}
+        className={`flex sm:h-9 sm:w-9 h-7 w-7 items-center justify-center rounded-md bg-white/10 ${playbackMode === 'fast' ? 'sm:px-2.5' : 'px-2'} text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer ${playbackMode !== 'paused' ? 'bg-white/25' : ''}`}
         aria-label="Cycle playback speed"
         title="Cycle playback speed"
       >
@@ -85,7 +85,7 @@ export function TimelinePlayControls({
       <button
         type="button"
         onClick={onPause}
-        className={`flex h-9 w-9 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer ${playbackMode === 'paused' ? 'bg-white/25' : ''}`}
+        className={`flex sm:h-9 sm:w-9 h-7 w-7 items-center justify-center rounded-md bg-white/10 px-2 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer ${playbackMode === 'paused' ? 'bg-white/25' : ''}`}
         aria-label="Pause timeline"
         title="Pause timeline"
       >
@@ -95,7 +95,7 @@ export function TimelinePlayControls({
       <button
         type="button"
         onClick={onNextMonth}
-        className="flex h-9 w-9 items-center justify-center rounded-md bg-white/10 px-3 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
+        className="flex sm:h-9 sm:w-9 h-7 w-7 items-center justify-center rounded-md bg-white/10 px-2 text-sm font-extrabold text-white transition hover:bg-white/25 cursor-pointer"
         aria-label="Next month"
         title="Next month"
       >
