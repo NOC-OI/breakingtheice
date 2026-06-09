@@ -113,7 +113,7 @@ export function QuestionsStage({
           </div>
         </div>
         <div
-          className={`mt-5 flex flex-row gap-104 ${questionIndex === 0 && 'ml-120'} w-full md:w-40 xl:flex-col xl:gap-3 xl:ml-150 xl:mt-8`}
+          className={`mt-5 flex flex-row gap-104 xl:gap-135 ${questionIndex === 0 && 'ml-120'} w-full md:w-40 xl:mt-8`}
         >
           {questionIndex > 0 && (
             <button
@@ -129,7 +129,7 @@ export function QuestionsStage({
             type="button"
             onClick={onNext}
             disabled={!isCorrect}
-            className="inline-flex w-[117px] h-11 items-center justify-center gap-2 rounded-[4px] bg-[#0d3352] px-6 text-[16px] font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+            className={`inline-flex w-[117px] h-11 items-center justify-center gap-2 ${questionIndex === 0 && 'xl:ml-42'} rounded-[4px] bg-[#0d3352] px-6 text-[16px] font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 w-full`}
           >
             <span>Next</span>
             <FiArrowRight aria-hidden className="h-5 w-5" />
