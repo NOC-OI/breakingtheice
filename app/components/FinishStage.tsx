@@ -9,56 +9,71 @@ type FinishStageProps = {
 
 export function FinishStage({ onFinish, onBack }: FinishStageProps) {
   return (
-    <section className="relative z-20 h-full w-full overflow-auto bg-[#0D3352] text-white">
-      <div className="mx-auto flex min-h-full w-[min(1400px,96vw)] flex-col px-5 pb-10 xl:pt-45 sm:px-8 sm:pt-14">
+    <section className="relative z-20 h-full w-full overflow-auto pl-20 bg-[#0D3352] text-white">
+      <div className="mx-auto flex min-h-full w-[min(1400px,96vw)] flex-col px-5 pb-10 px-8 pt-14 xl:pt-45">
         <h2 className="font-rl-aqva-black text-[45px] font-extrabold leading-tight sm:max-w-2xl sm:text-[45px]">
           Great work.
           <br />
           But we can all do more!
         </h2>
 
-        <div className="mt-8 grid gap-18 grid-cols-[1.3fr_1fr] items-center">
+        <div className="mt-8 xl:mt-10 grid gap-18 grid-cols-[1.3fr_1fr] items-center">
           <div className="text-lg font-medium leading-[1.3] text-[#f2f6fb] sm:text-[20px]">
             <p className="mb-3 text-xl font-bold leading-[1.3] sm:text-[22px] font-test-sohne">
               Some things you can do to help:
             </p>
-            <p className="text-[20px] font-bold">
-              • Eat more vegetables.
-              <span className="text-[20px] font-light">
-                {' '}
-                Food like fruit & veg, whole grains, legumes, nuts and seeds lower your
-                environmental impact. Meat and dairy use a lot of energy!
-              </span>
-            </p>
-            <p className="text-[20px] font-bold">
-              • Think about how you live and your relationship to waste.{' '}
-              <span className="text-[20px] font-light">
-                {' '}
-                Do you litter, or do you clean up after yourself? Do you recycle?
-              </span>
-            </p>
-            <p className="text-[20px] font-bold">• Learn about renewable energy.</p>
-            <p className="text-[20px] font-bold">
-              • Participate in climate-focused projects in your schools or college!
-            </p>
-            <p className="text-[20px] font-bold">
-              • Reduce your energy consumption. When traveling: cycle instead of taking the bus or
-              driving a car.{' '}
-              <span className="text-[20px] font-light">
-                Flying by airplane burns large amounts of fossil fuels. At home: switch off lights
-                when you leave the room, don&apos;t leave the tap running when you brush your teeth.
-              </span>
-            </p>
+            <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+                Reduce your energy consumption.
+                <br />
+                When traveling:
+                <span className="font-light">
+                  {' '}
+                  cycle or take the train or bus instead of driving a car. Flying by airplane burns
+                  large amounts of fossil fuels.
+                </span>
+              </li>
+
+              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+                Save energy at home.
+                <br />
+                <span className="font-light">
+                  Switch off lights when you leave the room, don&apos;t leave the tap running when
+                  you brush your teeth.
+                </span>
+              </li>
+
+              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+                Participate in climate-focused projects in your schools or college!
+              </li>
+
+              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+                Learn about renewable energy.
+              </li>
+
+              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+                Eat more vegetables.
+                <br />
+                <span className="font-light">
+                  Food like fruit & veg, whole grains, legumes, nuts and seeds lower your
+                  environmental impact. Meat and dairy use a lot of energy!
+                </span>
+              </li>
+
+              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+                Think about how you live and your relationship to waste.
+                <br />
+                <span className="font-light">
+                  Do you litter, or do you clean up after yourself? Do you recycle?
+                </span>
+              </li>
+            </ul>
           </div>
-          <div>
-            <Image
-              src={ASSETS.finishDiver}
-              alt="Diver illustration"
-              width={520}
-              height={360}
-              className="mx-auto w-full max-w-130 object-contain"
-            />
-            <div className="mt-6 flex flex-row gap-3 w-full md:flex-col md:w-40 md:mt-8 md:gap-3">
+          <div className="flex flex-col">
+            <div className="mx-auto w-full max-w-120 h-85 xl:h-70">
+              <Image src={ASSETS.finishDiver} alt="Diver illustration" width={500} height={360} />
+            </div>
+            <div className="mt-6 flex flex-col gap-3 w-full w-40 xl:mt-0">
               <button
                 type="button"
                 onClick={onBack}
@@ -77,11 +92,11 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
               </button>
             </div>
           </div>
-          <div className="flex flex-row justify-start">
-            <p className="text-[12px] pt-13 xl:pt-20 leading-[1.3] text-[#00B5FF]/70 lg:left-18 font-test-sohne">
-              Illustration by John Stocker (Iconscout Free to Use License)
-            </p>
-          </div>
+        </div>
+        <div className="flex flex-row justify-self-end">
+          <p className="text-[12px] pt-5 xl:pt-50 leading-[1.3] text-[#00B5FF]/70 lg:left-18 font-test-sohne">
+            Illustration by John Stocker (Iconscout Free to Use License)
+          </p>
         </div>
       </div>
     </section>
