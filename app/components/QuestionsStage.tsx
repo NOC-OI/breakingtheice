@@ -47,7 +47,7 @@ export function QuestionsStage({
             {question.title}
           </h2>
 
-          <div className="mt-4 font-test-sohne text-[1.375rem] font-medium text-[clamp(1.05rem,1.75vw,1.85rem)] w-[80%] xl:w-full leading-[1.3]">
+          <div className="mt-4 w-[80%] font-test-sohne font-medium text-[clamp(1.05rem,1.75vw,1.85rem)] leading-[1.3] xl:w-full">
             <p>{question.scenario}</p>
             <p className="mt-7 font-bold">{question.question}</p>
           </div>
@@ -60,53 +60,75 @@ export function QuestionsStage({
               const isCorrectOption = question.correctIndex === index;
               const revealCorrect = isSelected && isCorrectOption;
               const isWrongSelected = isSelected && !isCorrectOption;
+              const cardBorderClass = revealCorrect
+                ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
+                : isWrongSelected
+                  ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
+                  : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5';
 
               return (
                 <button
                   key={option.text}
                   type="button"
                   onClick={() => onSelectOption(index)}
-                  className={`w-full cursor-pointer relative flex h-80 flex-col overflow-hidden rounded-lg border-solid text-center font-bold text-[#efefef] transition text-[18px] bg-[#0d3352] ${
-                    revealCorrect
-                      ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#6FFF00]'
-                      : isWrongSelected
-                        ? 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#FF0000]'
-                        : 'border-x-[3.2px] border-t-[3.2px] border-b-[6.4px] border-[#0d3352] hover:-translate-y-0.5'
-                  }`}
+                  aria-pressed={isSelected}
+                  className={`relative flex h-80 w-full cursor-pointer flex-col overflow-hidden rounded-lg border-solid bg-[#0d3352] text-center text-[18px] font-bold text-[#efefef] transition ${cardBorderClass}`}
                 >
-                  {option.image ? (
-                    <div className="relative h-[55%] flex items-center justify-center w-full mt-5">
-                      <Image
-                        src={`${BASE_PATH}${option.image}`}
-                        alt={option.text}
-                        width={option.width}
-                        height={option.height}
-                        className={`object-contain transition ${
-                          isWrongSelected ? 'grayscale opacity-60' : ''
-                        }`}
-                      />
+                  <div
+                    className="relative h-full w-full transform-3d transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
+                    style={{ transform: isSelected ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+                  >
+                    <div className="absolute inset-0 flex flex-col backface-hidden">
+                      {option.image ? (
+                        <div className="relative mt-5 flex h-[55%] w-full items-center justify-center">
+                          <Image
+                            src={`${BASE_PATH}${option.image}`}
+                            alt={option.text}
+                            width={option.width}
+                            height={option.height}
+                            className="object-contain"
+                          />
+                        </div>
+                      ) : null}
+
+                      <div className="flex flex-1 items-center justify-center px-3 py-4">
+                        <p className="line-clamp-4 leading-[1.2] text-[18px]">{option.text}</p>
+                      </div>
                     </div>
-                  ) : null}
 
-                  <div className="flex flex-1 items-center justify-center px-3 py-4">
-                    {isSelected ? (
-                      <p className="line-clamp-7 leading-[1.2] text-[16px]">{option.explanation}</p>
-                    ) : (
-                      <p className="line-clamp-4 leading-[1.2] text-[18px]">{option.text}</p>
-                    )}
+                    <div className="absolute inset-0 flex flex-col backface-hidden transform-[rotateY(180deg)]">
+                      {option.image ? (
+                        <div className="relative mt-5 flex h-[55%] w-full items-center justify-center">
+                          <Image
+                            src={`${BASE_PATH}${option.image}`}
+                            alt={option.text}
+                            width={option.width}
+                            height={option.height}
+                            className={`object-contain transition ${isWrongSelected ? 'grayscale opacity-60' : ''
+                              }`}
+                          />
+                        </div>
+                      ) : null}
+
+                      <div className="flex flex-1 items-center justify-center px-3 py-4">
+                        <p className="line-clamp-7 leading-[1.2] text-[16px]">
+                          {option.explanation}
+                        </p>
+                      </div>
+
+                      {revealCorrect && (
+                        <span className="absolute right-3 top-3 text-2xl">
+                          <IoCheckmarkCircle className="text-[#6FFF00]" />
+                        </span>
+                      )}
+                      {isWrongSelected && (
+                        <span className="absolute right-3 top-3 flex items-center justify-center text-2xl">
+                          <span className="absolute h-[0.6em] w-[0.6em] rounded-full bg-white" />
+                          <IoCloseCircle className="relative z-10 text-[#FF0000]" />
+                        </span>
+                      )}
+                    </div>
                   </div>
-
-                  {revealCorrect && (
-                    <span className="absolute right-3 top-3 text-2xl">
-                      <IoCheckmarkCircle className="text-[#6FFF00]" />
-                    </span>
-                  )}
-                  {isWrongSelected && (
-                    <span className="absolute right-3 top-3 flex items-center justify-center text-2xl">
-                      <span className="absolute h-[0.6em] w-[0.6em] rounded-full bg-white" />
-                      <IoCloseCircle className="relative z-10 text-[#FF0000]" />
-                    </span>
-                  )}
                 </button>
               );
             })}
@@ -119,7 +141,7 @@ export function QuestionsStage({
             <button
               type="button"
               onClick={onBack}
-              className="inline-flex w-[117px] h-11 items-center justify-center gap-2 rounded-[4px] border border-[#0d3352] bg-transparent px-6 text-[16px] font-semibold text-[#0d3352] transition hover:bg-[#0d3352]/5 w-full"
+              className="inline-flex h-11 w-29.25 items-center justify-center gap-2 rounded-sm border border-[#0d3352] bg-transparent px-6 text-[16px] font-semibold text-[#0d3352] transition hover:bg-[#0d3352]/5"
             >
               <FiArrowLeft aria-hidden className="h-5 w-5" />
               <span>Back</span>
