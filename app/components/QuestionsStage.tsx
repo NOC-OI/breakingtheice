@@ -41,19 +41,19 @@ export function QuestionsStage({
       className="relative z-20 h-screen w-full overflow-hidden"
       style={{ backgroundColor: question.bg }}
     >
-      <div className="relative mx-1 h-full w-[76vw] px-4 pb-8 pt-14 xl:pt-35 xl:mx-auto xl:w-[min(1440px,96vw)] sm:px-8 lg:px-18">
-        <div className="max-w-197.5 text-[#0d3352]">
+      <div className="relative mx-1 h-full w-[76vw] px-4 pb-8 pt-14 xl:pt-35 xl:mx-auto xl:w-96vw sm:px-8 lg:px-18">
+        <div className="max-w-220 text-[#0d3352]">
           <h2 className="font-rl-aqva-black text-[clamp(2.1rem,4vw,4rem)] font-extrabold leading-[1.05]">
             {question.title}
           </h2>
 
-          <div className="mt-4 w-[80%] font-test-sohne font-medium text-[clamp(1.05rem,1.75vw,1.85rem)] leading-[1.3] xl:w-full">
+          <div className="mt-[44.11px] xl:mt-[43px] w-[80%] xl:w-full font-test-sohne font-medium text-[22px] leading-[1.3]">
             <p>{question.scenario}</p>
-            <p className="mt-7 font-bold">{question.question}</p>
+            <p className="mt-7 font-bold xl:h-27">{question.question}</p>
           </div>
         </div>
 
-        <div className="flex flex-col gap-6 mt-8 w-[85%] xl:w-full lg:flex-row lg:items-end lg:gap-8 ">
+        <div className="flex flex-col gap-6 mt-8 xl:mt-0 w-[85%] xl:w-full lg:flex-row lg:items-end lg:gap-8 ">
           <div className="lg:grid lg:w-full lg:max-w-190 lg:gap-4 sm:grid-cols-3">
             {question.options.map((option, index) => {
               const isSelected = selectedOption === index;
@@ -104,8 +104,9 @@ export function QuestionsStage({
                             alt={option.text}
                             width={option.width}
                             height={option.height}
-                            className={`object-contain transition ${isWrongSelected ? 'grayscale opacity-60' : ''
-                              }`}
+                            className={`object-contain transition ${
+                              isWrongSelected ? 'grayscale opacity-60' : ''
+                            }`}
                           />
                         </div>
                       ) : null}
@@ -159,11 +160,11 @@ export function QuestionsStage({
         </div>
 
         <div
-          className={`pointer-events-none mt-8 hidden h-125 w-95 top-20 xl:top-35 left-[80%] md:absolute md:mt-0 md:block xl:left-[68.5%]`}
+          className={`pointer-events-none mt-8 hidden h-125 w-95 top-14 xl:top-35 left-[80%] md:absolute md:mt-0 md:block xl:left-[68.5%]`}
           aria-hidden
         >
           <div
-            className={`absolute ${firstMedia?.position === 'top' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] right-5 xl:right-15 top-0`}
+            className={`absolute ${firstMedia?.position === 'top' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] right-8 xl:right-15 top-0`}
             style={{
               width: firstMedia?.width ? `${firstMedia.width * 4}px` : '280px',
               height: firstMedia?.height ? `${firstMedia.height * 4}px` : '360px',
@@ -184,7 +185,7 @@ export function QuestionsStage({
           </div>
 
           <div
-            className={`absolute ${secondMedia?.position === 'top' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] left-40 top-72.5`}
+            className={`absolute ${secondMedia?.position === 'top' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] left-35 xl:lef-40 top-60 xl:top-70`}
             style={{
               width: secondMedia?.width ? `${secondMedia.width * 4}px` : '320px',
               height: secondMedia?.height ? `${secondMedia.height * 4}px` : '300px',
