@@ -11,12 +11,22 @@ import { TimeSlider } from './TimeSlider';
 import { StartQuestButton } from './StartQuestButton';
 
 const ZARR_LAYER_ID = 'arctic-ice-age-layer';
+const MAP_STYLE_URLS = {
+  positron: 'https://tiles.openfreemap.org/styles/positron',
+  bright: 'https://tiles.openfreemap.org/styles/bright',
+  liberty: 'https://tiles.openfreemap.org/styles/liberty',
+  dark: 'https://tiles.openfreemap.org/styles/dark',
+  fiord: 'https://tiles.openfreemap.org/styles/fiord'
+} as const;
+const DEFAULT_MAP_STYLE = 'fiord';
 
 const ICE_COLORMAP = ['#4E5F6C', '#687582', '#83929B', '#A8B6BE', '#C7D7DE'];
 const LEGEND_BINS = 5;
 const QUERY_COLORMAP_STEPS = 255;
 const MAX_SHADER_COLOR_STOPS = 24;
 const COLORMAP_NAME_LOOKUP = new Map(allColorScales.map(name => [name.toLowerCase(), name]));
+
+type MapStyleName = keyof typeof MAP_STYLE_URLS;
 
 const ICE_AGE_CUSTOM_FRAG = `
   float age = age_of_sea_ice;
@@ -150,6 +160,19 @@ ${interpolationRules} else {
 `;
 }
 
+function normalizeMapStyle(value: string | null): MapStyleName {
+  const normalized = value?.trim().toLowerCase();
+  if (!normalized) {
+    return DEFAULT_MAP_STYLE;
+  }
+
+  if (normalized in MAP_STYLE_URLS) {
+    return normalized as MapStyleName;
+  }
+
+  return DEFAULT_MAP_STYLE;
+}
+
 type MapPageProps = {
   hasQuestStarted: boolean;
   yearIndex: number;
@@ -179,10 +202,12 @@ export function MapPage({
   const [queryColormapParam, setQueryColormapParam] = useState<string | null>(null);
   const [queryClimParam, setQueryClimParam] = useState<string | null>(null);
   const [datasetMode, setDatasetMode] = useState<DatasetMode>('normal');
+  const [mapStyleName, setMapStyleName] = useState<MapStyleName>(DEFAULT_MAP_STYLE);
   const [queryParamsInitialized, setQueryParamsInitialized] = useState(false);
 
   const activeDatasetConfig = DATASET_CONFIG[datasetMode];
   const layerSource = activeDatasetConfig.sourceUrl;
+  const mapStyleUrl = MAP_STYLE_URLS[mapStyleName];
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -191,6 +216,7 @@ export function MapPage({
     setQueryColormapParam(params.get('colormap'));
     setQueryClimParam(params.get('clim'));
     setDatasetMode(normalizeDatasetMode(params.get('dataset')));
+    setMapStyleName(normalizeMapStyle(params.get('style')));
     setQueryParamsInitialized(true);
   }, []);
 
@@ -209,11 +235,12 @@ export function MapPage({
 
     const params = new URLSearchParams(window.location.search);
     params.set('dataset', datasetMode);
+    params.set('style', mapStyleName);
 
     const queryString = params.toString();
     const nextUrl = `${window.location.pathname}${queryString ? `?${queryString}` : ''}${window.location.hash}`;
     window.history.replaceState({}, '', nextUrl);
-  }, [datasetMode, queryParamsInitialized]);
+  }, [datasetMode, mapStyleName, queryParamsInitialized]);
 
   const queryColormapName = useMemo(() => {
     const value = queryColormapParam?.trim();
@@ -351,7 +378,7 @@ export function MapPage({
 
     const map = new maplibregl.Map({
       container: mapContainerRef.current,
-      style: 'https://tiles.openfreemap.org/styles/fiord',
+      style: mapStyleUrl,
       center: [-90, 73],
       zoom: 1.75,
       pitch: 10,
@@ -378,7 +405,7 @@ export function MapPage({
       setIsZarrLoading(false);
       setIsMapReady(false);
     };
-  }, [queryParamsInitialized]);
+  }, [mapStyleUrl, queryParamsInitialized]);
 
   useEffect(() => {
     const map = mapRef.current;
