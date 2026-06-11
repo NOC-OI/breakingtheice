@@ -10,7 +10,7 @@ type FinishStageProps = {
 export function FinishStage({ onFinish, onBack }: FinishStageProps) {
   return (
     <section className="relative z-20 h-dvh w-dvw overflow-auto pl-20 bg-[#0D3352] text-white">
-      <div className="mx-auto flex min-h-full w-[min(1400px,96vw)] flex-col pb-10 px-8 pt-14 xl:pt-45">
+      <div className="mx-auto flex min-h-full w-[min(1400px,96vw)] flex-col pb-10 px-8 pt-9 xl:pt-45">
         <h2 className="font-rl-aqva-black text-[45px] font-extrabold leading-tight sm:max-w-2xl xl:text-[45px]">
           Great work.
           <br />

@@ -7,16 +7,16 @@
     "imageSource": "Image source - NOC Arctic Cruise & Pexels",
     "options": [
       {
-        "image": "/q1_option_1.png",
-        "text": "At the south (bottom) of the planet. ",
-        "explanation": "The south polar region is called the Antarctic.",
+        "image": "/q1_option_2.png",
+        "text": "At the north (top) of the planet.",
+        "explanation": "The Arctic is Earth's northern polar region. It's around the North Pole.",
         "width": 123.33,
         "height": 127.508
       },
       {
-        "image": "/q1_option_2.png",
-        "text": "At the north (top) of the planet.",
-        "explanation": "The Arctic is Earth's northern polar region. It's around the North Pole.",
+        "image": "/q1_option_1.png",
+        "text": "At the south (bottom) of the planet. ",
+        "explanation": "The south polar region is called the Antarctic.",
         "width": 123.33,
         "height": 127.508
       },
@@ -28,7 +28,7 @@
         "height": 120.171
       }
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "bg": "#ffd703",
     "media": [
       {
@@ -206,21 +206,21 @@
         "height": 107.817
       },
       {
-        "image": "/q5_option_2.png",
-        "text": "The dark water absorbs more sunlight, warming the planet faster.",
-        "explanation": "That's right! Water absorbs more sunlight because it's so dark. Ice is very bright - and so it reflects more light than dark water.",
-        "width": 138.727,
-        "height": 107.817
-      },
-      {
         "image": "/q5_option_3.png",
         "text": "It has no effect because the sun's strength stays the same.",
         "explanation": "That's incorrect as this ignores the Albedo Effect (how shiny or dark a surface is and how much light it reflects back).",
         "width": 113.95,
         "height": 107.817
+      },
+      {
+        "image": "/q5_option_2.png",
+        "text": "The dark water absorbs more sunlight, warming the planet faster.",
+        "explanation": "That's right! Water absorbs more sunlight because it's so dark. Ice is very bright - and so it reflects more light than dark water.",
+        "width": 138.727,
+        "height": 107.817
       }
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "bg": "#ffd703",
     "media": [
       {
