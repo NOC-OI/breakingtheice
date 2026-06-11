@@ -36,7 +36,7 @@ export function OpeningStage({ onPlay, onMinimize }: OpeningStageProps) {
   const playOffsetY = isPlayPressing ? 13 : isPlayHovered ? 4 : 0;
 
   return (
-    <section className="relative z-20 h-full w-full overflow-hidden bg-[#0d3352]">
+    <section className="relative z-20 h-dvh w-dvw overflow-hidden bg-[#0d3352]">
       <div className="absolute left-1/2 top-1/2 h-[min(380vh,380vw)] aspect-square -translate-x-1/2 -translate-y-1/2 opacity-70">
         <Image src={ASSETS.openingVectorPrimary} alt="" fill priority className="object-cover" />
       </div>

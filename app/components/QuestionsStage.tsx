@@ -38,7 +38,7 @@ export function QuestionsStage({
 
   return (
     <section
-      className="relative z-20 h-screen w-full overflow-hidden"
+      className="relative z-20 h-dvh w-full overflow-hidden"
       style={{ backgroundColor: question.bg }}
     >
       <div className="relative mx-1 h-full w-[76vw] px-4 pb-8 pt-14 xl:pt-35 xl:mx-auto xl:w-96vw sm:px-8 lg:px-18">
@@ -47,7 +47,7 @@ export function QuestionsStage({
             {question.title}
           </h2>
 
-          <div className="mt-[44.11px] xl:mt-[43px] w-[80%] xl:w-full font-test-sohne font-medium text-[22px] leading-[1.3]">
+          <div className="mt-[44.11px] xl:mt-10.75 w-[80%] xl:w-full font-test-sohne font-medium text-[22px] leading-[1.3]">
             <p>{question.scenario}</p>
             <p className="mt-7 font-bold xl:h-27">{question.question}</p>
           </div>
@@ -142,7 +142,7 @@ export function QuestionsStage({
             <button
               type="button"
               onClick={onBack}
-              className="inline-flex h-11 w-29.25 items-center justify-center gap-2 rounded-sm border border-[#0d3352] bg-transparent px-6 text-[16px] font-semibold text-[#0d3352] transition hover:bg-[#0d3352]/5"
+              className="inline-flex cursor-pointer h-11 w-29.25 items-center justify-center gap-2 rounded-sm border border-[#0d3352] bg-transparent px-6 text-[16px] font-semibold text-[#0d3352] transition hover:bg-[#0d3352]/5"
             >
               <FiArrowLeft aria-hidden className="h-5 w-5" />
               <span>Back</span>
@@ -152,7 +152,7 @@ export function QuestionsStage({
             type="button"
             onClick={onNext}
             disabled={!isCorrect}
-            className={`inline-flex w-[117px] h-11 items-center justify-center gap-2 ${questionIndex === 0 && 'xl:ml-42'} rounded-[4px] bg-[#0d3352] px-6 text-[16px] font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 w-full`}
+            className={`inline-flex ${isCorrect ? 'cursor-pointer' : 'cursor-not-allowed'} w-[117px] h-11 items-center justify-center gap-2 ${questionIndex === 0 && 'xl:ml-42'} rounded-[4px] bg-[#0d3352] px-6 text-[16px] font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 w-full`}
           >
             <span>Next</span>
             <FiArrowRight aria-hidden className="h-5 w-5" />

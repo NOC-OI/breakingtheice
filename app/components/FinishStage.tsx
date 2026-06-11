@@ -9,9 +9,9 @@ type FinishStageProps = {
 
 export function FinishStage({ onFinish, onBack }: FinishStageProps) {
   return (
-    <section className="relative z-20 h-full w-full overflow-auto pl-20 bg-[#0D3352] text-white">
-      <div className="mx-auto flex min-h-full w-[min(1400px,96vw)] flex-col px-5 pb-10 px-8 pt-14 xl:pt-45">
-        <h2 className="font-rl-aqva-black text-[45px] font-extrabold leading-tight sm:max-w-2xl sm:text-[45px]">
+    <section className="relative z-20 h-dvh w-dvw overflow-auto pl-20 bg-[#0D3352] text-white">
+      <div className="mx-auto flex min-h-full w-[min(1400px,96vw)] flex-col pb-10 px-8 pt-14 xl:pt-45">
+        <h2 className="font-rl-aqva-black text-[45px] font-extrabold leading-tight sm:max-w-2xl xl:text-[45px]">
           Great work.
           <br />
           But we can all do more!
@@ -23,7 +23,7 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
               Some things you can do to help:
             </p>
             <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
-              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+              <li className="font-test-sohne text-[20px] xl:text-[20px] font-semibold pb-2 leading-[1.3]">
                 Reduce your energy consumption.
                 <br />
                 When traveling:
@@ -34,7 +34,7 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
                 </span>
               </li>
 
-              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+              <li className="font-test-sohne text-[20px] xl:text-[20px] font-semibold pb-2 leading-[1.3]">
                 Save energy at home.
                 <br />
                 <span className="font-light">
@@ -43,15 +43,15 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
                 </span>
               </li>
 
-              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+              <li className="font-test-sohne text-[20px] xl:text-[20px] font-semibold pb-2 leading-[1.3]">
                 Participate in climate-focused projects in your schools or college!
               </li>
 
-              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+              <li className="font-test-sohne text-[20px] xl:text-[20px] font-semibold pb-2 leading-[1.3]">
                 Learn about renewable energy.
               </li>
 
-              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+              <li className="font-test-sohne text-[20px] xl:text-[20px] font-semibold pb-2 leading-[1.3]">
                 Eat more vegetables.
                 <br />
                 <span className="font-light">
@@ -60,7 +60,7 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
                 </span>
               </li>
 
-              <li className="font-test-sohne text-[20px] font-semibold pb-2 leading-[1.3]">
+              <li className="font-test-sohne text-[20px] xl:text-[20px] font-semibold pb-2 leading-[1.3]">
                 Think about how you live and your relationship to waste.
                 <br />
                 <span className="font-light">
@@ -73,11 +73,11 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
             <div className="mx-auto w-full max-w-120 h-85 xl:h-70">
               <Image src={ASSETS.finishDiver} alt="Diver illustration" width={500} height={360} />
             </div>
-            <div className="mt-6 flex flex-col gap-3 w-full w-40 xl:mt-0">
+            <div className="mt-6 flex flex-col gap-3 w-40 xl:mt-0">
               <button
                 type="button"
                 onClick={onBack}
-                className="inline-flex w-[130px] h-11 items-center justify-center gap-1 border border-[#00B5FF] bg-transparent cursor-pointer mt-10 rounded-md bg-[#00B5FF] px-6 py-3 text-white shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:bg-[#0d3352]/5"
+                className="inline-flex w-32.5 h-11 items-center justify-center gap-1 border border-[#00B5FF] bg-transparent cursor-pointer mt-10 rounded-md bg-[#00B5FF] px-6 py-3 text-white shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:bg-[#0d3352]/5"
               >
                 <FiArrowLeft aria-hidden className="h-5 w-5" />
                 <span className="text-[1rem] font-semibold">Back</span>
@@ -85,7 +85,7 @@ export function FinishStage({ onFinish, onBack }: FinishStageProps) {
               <button
                 type="button"
                 onClick={onFinish}
-                className="inline-flex w-[130px] h-11 items-center justify-center gap-1 cursor-pointer rounded-md bg-[#00B5FF] px-8 py-3 text-black shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:brightness-110"
+                className="inline-flex w-32.5 h-11 items-center justify-center gap-1 cursor-pointer rounded-md bg-[#00B5FF] px-8 py-3 text-black shadow-[0_7px_0_rgba(0,0,0,0.22)] transition hover:brightness-110"
               >
                 <span className="text-[1rem] font-semibold">Finish</span>
                 <FiArrowRight aria-hidden className="h-5 w-5" />

@@ -56,7 +56,7 @@ export function IntroStage({
   const isAlertFlipped = clampedWarningProgress < 100 && alertFlashStep % 2 === 1;
 
   return (
-    <section className="relative z-20 h-full w-full overflow-hidden bg-[#b9b3b9]">
+    <section className="relative z-20 h-dvh w-dvw overflow-hidden bg-[#b9b3b9]">
       <div className="absolute inset-0 opacity-55">
         <Image src={ASSETS.arcticOutline} alt="" fill className="object-cover" priority />
       </div>
@@ -103,28 +103,28 @@ export function IntroStage({
       </div>
 
       {showStartMission && (
-        <div className="absolute left-[max(24px,7vw)] xl:top-[26vh] z-20 w-[51%] text-black">
+        <div className="absolute left-[max(24px,7vw)] xl:top-[26vh] z-20 w-[48%] xl:w-[51%] text-black">
           <div className="pt-50 pb-1 xl:pt-0 xl:pb-15">
-            <h2 className="font-['Courier_New'] text-[24px] xl:text-[36px] leading-[1.2] font-bold">
+            <h2 className="font-['Courier_New'] text-[23px] xl:text-[36px] leading-[1.2] font-bold">
               Greetings Agent
             </h2>
 
-            <p className="mt-6 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[21px] xl:text-[26px] leading-[1.3] font-bold">
               Across the Arctic, rising temperatures are triggering a chain reaction. Ocean currents
               are changing, glaciers and arctic ice are melting, and habitats are disappearing.
             </p>
 
-            <p className="mt-6 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[21px] xl:text-[26px] leading-[1.3] font-bold">
               NOC have uncovered 5 critical data points.
             </p>
 
-            <p className="mt-6 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[21px] xl:text-[26px] leading-[1.3] font-bold">
               Your mission is to read each scenario and select the correct scientific outcome. One
               wrong calculation could accelerate the damage. We need to stabilise the climate
               models, to protect our polar regions.
             </p>
 
-            <p className="mt-6 font-['Courier_New'] text-[22px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[21px] xl:text-[26px] leading-[1.3] font-bold">
               The fate of Planet Earth rests in your hands.
               <br />
               Are you ready to accept this mission?
