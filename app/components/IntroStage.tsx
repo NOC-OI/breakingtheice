@@ -103,7 +103,7 @@ export function IntroStage({
       </div>
 
       {showStartMission && (
-        <div className="absolute left-[max(24px,7vw)] xl:top-[26vh] z-20 w-[48%] xl:w-[51%] text-black">
+        <div className="absolute left-[max(24px,7vw)] xl:top-[26vh] z-20 w-[51%] xl:w-[51%] text-black">
           <div className="pt-50 pb-1 xl:pt-0 xl:pb-15">
             <h2 className="font-['Courier_New'] text-[23px] xl:text-[36px] leading-[1.2] font-bold">
               Greetings Agent
