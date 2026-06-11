@@ -35,7 +35,7 @@ export function QuestionsStage({
 
   const firstMedia = mediaSources[0];
   const secondMedia = mediaSources[1];
-
+  console.log('question', question);
   return (
     <section
       className="relative z-20 h-dvh w-full overflow-hidden"
@@ -47,9 +47,13 @@ export function QuestionsStage({
             {question.title}
           </h2>
 
-          <div className="mt-[44.11px] xl:mt-10.75 w-[80%] xl:w-full font-test-sohne font-medium text-[22px] leading-[1.3]">
+          <div
+            className={`xl:mt-10.75 w-[80%] xl:w-full font-test-sohne font-medium ${question.id === 'q3' ? 'mt-[40px] text-[20px]' : 'mt-[44.11px] text-[22px]'}  xl:text-[22px] leading-[1.3]`}
+          >
             <p>{question.scenario}</p>
-            <p className="mt-7 font-bold xl:h-27">{question.question}</p>
+            <p className={`${question.id === 'q3' ? 'mt-4' : 'mt-7'} font-bold xl:h-27`}>
+              {question.question}
+            </p>
           </div>
         </div>
 

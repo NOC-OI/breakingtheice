@@ -109,22 +109,22 @@ export function IntroStage({
               Greetings Agent
             </h2>
 
-            <p className="mt-6 font-['Courier_New'] text-[21px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[20px] xl:text-[26px] leading-[1.3] font-bold">
               Across the Arctic, rising temperatures are triggering a chain reaction. Ocean currents
               are changing, glaciers and arctic ice are melting, and habitats are disappearing.
             </p>
 
-            <p className="mt-6 font-['Courier_New'] text-[21px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[20px] xl:text-[26px] leading-[1.3] font-bold">
               NOC have uncovered 5 critical data points.
             </p>
 
-            <p className="mt-6 font-['Courier_New'] text-[21px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[20px] xl:text-[26px] leading-[1.3] font-bold">
               Your mission is to read each scenario and select the correct scientific outcome. One
               wrong calculation could accelerate the damage. We need to stabilise the climate
               models, to protect our polar regions.
             </p>
 
-            <p className="mt-6 font-['Courier_New'] text-[21px] xl:text-[26px] leading-[1.3] font-bold">
+            <p className="mt-6 font-['Courier_New'] text-[20px] xl:text-[26px] leading-[1.3] font-bold">
               The fate of Planet Earth rests in your hands.
               <br />
               Are you ready to accept this mission?
