@@ -48,7 +48,7 @@ export function QuestionsStage({
           </h2>
 
           <div
-            className={`xl:mt-10.75 w-[80%] xl:w-full font-test-sohne font-medium ${question.id === 'q3' ? 'mt-[40px] text-[20px]' : 'mt-[44.11px] text-[22px]'}  xl:text-[22px] leading-[1.3]`}
+            className={`xl:mt-10.75 w-[80%] xl:w-full font-test-sohne font-medium ${question.id === 'q3' ? 'mt-8.5 text-[20px]' : 'mt-[44.11px] text-[22px]'}  xl:text-[22px] leading-[1.3]`}
           >
             <p>{question.scenario}</p>
             <p className={`${question.id === 'q3' ? 'mt-4' : 'mt-7'} font-bold xl:h-27`}>
@@ -57,7 +57,9 @@ export function QuestionsStage({
           </div>
         </div>
 
-        <div className="flex flex-col gap-6 mt-8 xl:mt-0 w-[85%] xl:w-full lg:flex-row lg:items-end lg:gap-8 ">
+        <div
+          className={`flex flex-col gap-6 ${question.id === 'q3' ? 'mt-6' : 'mt-8'} xl:mt-0 w-[85%] xl:w-full lg:flex-row lg:items-end lg:gap-8`}
+        >
           <div className="lg:grid lg:w-full lg:max-w-190 lg:gap-4 sm:grid-cols-3">
             {question.options.map((option, index) => {
               const isSelected = selectedOption === index;
