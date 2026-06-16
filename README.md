@@ -7,7 +7,7 @@ Breaking the Ice is an interactive science exhibit designed for pupils, teachers
 
 The stand is designed for touch interaction (tablets, iPads, or touchscreen laptops), supported by a pull-up banner and live facilitators.
 
-**Live demo:** [https://breakingtheice.space](https://breakingtheice.space)
+**Live demo:** [https://noc-oi.github.io/breakingtheice](https://noc-oi.github.io/breakingtheice)
 
 ### Learning Goals
 
@@ -141,27 +141,41 @@ Each question object should include:
 2. title: displayed heading
 3. scenario: explanatory paragraph
 4. question: the actual prompt
-5. options: array of 3 option objects
-6. correctIndex: zero-based index of the correct option
-7. bg: stage background color (hex)
-8. media: optional array of one or two image paths
+5. imageSource: Image source
+6. options: array of 3 option objects (See Option Object Description below)
+7. correctIndex: zero-based index of the correct option
+8. bg: stage background color (hex)
+9. media: optional array of one or two image paths (See Media Object Description below)
+
 
 Each option object currently supports:
 
-1. text: option label shown on the card
-2. explanation: feedback text for learning context
-3. image: optional image path
+1. image: optional image path
+2. text: option label shown on the card
+3. explanation: feedback text for learning context
+4. width: width of the image
+5. height: height of the image
 
-### Adding or changing question images
+Each media object currently supports:
+1. image: optional image path
+2. position: position of the image (front or back)
+3. transform: rotation of the image
+4. width: width of the image
+5. height: height of the image
 
-1. Add new image files into public/
+### Adding or changing question option images
+
+1. Add new image files or modify existing ones in the public folder
+2. Reference them in app/data/questions.json using paths like /my_image.png
+3. Update the width and height of the option image in the options array accordingly
+
+### Adding or changing question media images
+
+1. Add new image files or modify existing ones in the public folder
 2. Reference them in app/data/questions.json using paths like /my_image.png
 3. For media pairs, place them in the media array in the order you want them layered
+4. Update the width and height of the image in the media array accordingly
 
-The question stage layout alternates media composition by question number:
-
-1. Odd-numbered questions use the default image stack layout
-2. Even-numbered questions use the alternate position layout
 
 ### Quick validation after updating questions
 
