@@ -33,14 +33,14 @@
     "media": [
       {
         "image": "/q1_media_1.jpg",
-        "position": "top",
+        "position": "front",
         "transform": "0deg",
         "width": 68,
         "height": 85
       },
       {
         "image": "/q1_media_2.jpg",
-        "position": "bottom",
+        "position": "back",
         "transform": "8.55deg",
         "width": 80,
         "height": 80
@@ -51,7 +51,7 @@
     "id": "q2",
     "title": "Critical Data Question 2",
     "scenario": "The Arctic and Antarctic are both cold polar regions, but they are not the same kind of place.",
-    "question": "What makes the the Arctic different?",
+    "question": "What makes the Arctic different?",
     "imageSource": "Image source - Sergey Torbik & The Shuttervision (Pexels)",
     "options": [
       {
@@ -81,14 +81,14 @@
     "media": [
       {
         "image": "/q2_media_1.jpg",
-        "position": "bottom",
+        "position": "back",
         "transform": "0deg",
         "width": 80,
         "height": 80
       },
       {
         "image": "/q2_media_2.jpg",
-        "position": "top",
+        "position": "front",
         "transform": "8.55deg",
         "width": 80,
         "height": 80
@@ -129,14 +129,14 @@
     "media": [
       {
         "image": "/q3_media_1.jpg",
-        "position": "top",
+        "position": "front",
         "transform": "351.45deg",
         "width": 75,
         "height": 85
       },
       {
         "image": "/q3_media_2.jpg",
-        "position": "bottom",
+        "position": "back",
         "transform": "0deg",
         "width": 90,
         "height": 90
@@ -177,14 +177,14 @@
     "media": [
       {
         "image": "/q4_media_1.jpg",
-        "position": "top",
+        "position": "front",
         "transform": "351.45deg",
         "width": 84,
         "height": 84
       },
       {
         "image": "/q4_media_2.jpg",
-        "position": "bottom",
+        "position": "back",
         "transform": "0deg",
         "width": 75,
         "height": 80
@@ -225,14 +225,14 @@
     "media": [
       {
         "image": "/q5_media_1.jpg",
-        "position": "top",
+        "position": "front",
         "transform": "0deg",
         "width": 70,
         "height": 100
       },
       {
         "image": "/q5_media_2.jpg",
-        "position": "bottom",
+        "position": "back",
         "transform": "8.55deg",
         "width": 78,
         "height": 82

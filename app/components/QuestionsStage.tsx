@@ -110,9 +110,8 @@ export function QuestionsStage({
                             alt={option.text}
                             width={option.width}
                             height={option.height}
-                            className={`object-contain transition ${
-                              isWrongSelected ? 'grayscale opacity-60' : ''
-                            }`}
+                            className={`object-contain transition ${isWrongSelected ? 'grayscale opacity-60' : ''
+                              }`}
                           />
                         </div>
                       ) : null}
@@ -170,7 +169,7 @@ export function QuestionsStage({
           aria-hidden
         >
           <div
-            className={`absolute ${firstMedia?.position === 'top' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] right-8 xl:right-15 top-0`}
+            className={`absolute ${firstMedia?.position === 'front' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] right-8 xl:right-15 top-0`}
             style={{
               width: firstMedia?.width ? `${firstMedia.width * 4}px` : '280px',
               height: firstMedia?.height ? `${firstMedia.height * 4}px` : '360px',
@@ -191,7 +190,7 @@ export function QuestionsStage({
           </div>
 
           <div
-            className={`absolute ${secondMedia?.position === 'top' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] left-35 xl:lef-40 top-60 xl:top-70`}
+            className={`absolute ${secondMedia?.position === 'front' ? 'z-10' : 'z-0'} overflow-hidden rounded-[15px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] left-35 xl:lef-40 top-60 xl:top-70`}
             style={{
               width: secondMedia?.width ? `${secondMedia.width * 4}px` : '320px',
               height: secondMedia?.height ? `${secondMedia.height * 4}px` : '300px',
