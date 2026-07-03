@@ -7,7 +7,7 @@ Breaking the Ice is an interactive science exhibit designed for pupils, teachers
 
 The stand is designed for touch interaction (tablets, iPads, or touchscreen laptops), supported by a pull-up banner and live facilitators.
 
-**Live demo:** [https://noc-oi.github.io/breakingtheice](https://noc-oi.github.io/breakingtheice)
+**Live demo:** [https://breakingtheice.space/](https://breakingtheice.space/)
 
 ### Learning Goals
 
