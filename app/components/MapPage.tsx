@@ -383,7 +383,10 @@ export function MapPage({
       zoom: 1.75,
       pitch: 10,
       bearing: -8,
-      attributionControl: false
+      attributionControl: {
+        customAttribution: ''
+      }
+      // attributionControl: false
     });
 
     map.on('load', () => {
