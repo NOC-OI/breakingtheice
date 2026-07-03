@@ -35,7 +35,6 @@ export function QuestionsStage({
 
   const firstMedia = mediaSources[0];
   const secondMedia = mediaSources[1];
-  console.log('question', question);
   return (
     <section
       className="relative z-20 h-dvh w-full overflow-hidden"
@@ -82,9 +81,19 @@ export function QuestionsStage({
                 >
                   <div
                     className="relative h-full w-full transform-3d transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
-                    style={{ transform: isSelected ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+                    style={{
+                      transform: isSelected ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                      transformStyle: 'preserve-3d'
+                    }}
                   >
-                    <div className="absolute inset-0 flex flex-col backface-hidden">
+                    <div
+                      className="absolute inset-0 flex flex-col"
+                      style={{
+                        backfaceVisibility: 'hidden',
+                        WebkitBackfaceVisibility: 'hidden',
+                        transform: 'rotateY(0deg)'
+                      }}
+                    >
                       {option.image ? (
                         <div className="relative mt-5 flex h-[55%] w-full items-center justify-center">
                           <Image
@@ -102,7 +111,14 @@ export function QuestionsStage({
                       </div>
                     </div>
 
-                    <div className="absolute inset-0 flex flex-col backface-hidden transform-[rotateY(180deg)]">
+                    <div
+                      className="absolute inset-0 flex flex-col"
+                      style={{
+                        backfaceVisibility: 'hidden',
+                        WebkitBackfaceVisibility: 'hidden',
+                        transform: 'rotateY(180deg)'
+                      }}
+                    >
                       {option.image ? (
                         <div className="relative mt-5 flex h-[55%] w-full items-center justify-center">
                           <Image
@@ -110,8 +126,9 @@ export function QuestionsStage({
                             alt={option.text}
                             width={option.width}
                             height={option.height}
-                            className={`object-contain transition ${isWrongSelected ? 'grayscale opacity-60' : ''
-                              }`}
+                            className={`object-contain transition ${
+                              isWrongSelected ? 'grayscale opacity-60' : ''
+                            }`}
                           />
                         </div>
                       ) : null}
